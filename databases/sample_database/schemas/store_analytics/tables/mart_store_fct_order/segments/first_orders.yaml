@@ -1,0 +1,28 @@
+created_at: '2026-09-30T17:51:49.388805Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Sample Database
+  stages:
+  - filters:
+    - - =
+      - {}
+      - - field
+        - {}
+        - - Sample Database
+          - store_analytics
+          - mart_store_fct_order
+          - is_first_order
+      - true
+    source-table:
+    - Sample Database
+    - store_analytics
+    - mart_store_fct_order
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Each customer''s first order (1,747 incl. app orders). Owner: ignacio@metabase.com.'
+entity_id: xwQkLWVZ19d1LY7OLVBf0
+name: First orders
+serdes/meta:
+- id: xwQkLWVZ19d1LY7OLVBf0
+  label: first_orders
+  model: Segment

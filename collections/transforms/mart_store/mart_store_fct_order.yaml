@@ -1,0 +1,80 @@
+collection_id: APyWq2jEbdO8h9iOMrLam
+created_at: '2026-09-30T17:46:15.417972Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+description: 'One row per: order (historical Sample data and orders added in the Store Admin app) Key: order_id Sources: public.orders, public.people, store_analytics.cfg_store Definition: each order with its amounts, net sales, discount share, the customer''s order number, first/repeat flags, cohort month, months since first order, days since the previous order, origin, and period completeness Caveats: Source quirks kept and flagged (T11): 67 orders with quantity 0 (is_zero_quantity, $6,015 revenue) and 1 with discount above subtotal (is_discount_over_subtotal). total_usd is the recorded total (Revenue, D2); total_recomputed_usd = subtotal + tax - discount. Net sales = subtotal - discount (T4). Order number is by ordered_at then order_id (T5). Cohort = first-order month (T3). T6: April 2020 (data ends 2020-04-19) and the current month are flagged incomplete but kept. order_origin = app after cfg_store.historical_end_at  Owner: ignacio@metabase.com.'
+entity_id: DpaZVKaVCdj7Z_G_tbti1
+indexes: []
+name: mart_store_fct_order
+owner_user_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+source:
+  query:
+    database: Sample Database
+    stages:
+    - native: |
+        -- One row per: order (historical Sample data and orders added in the Store Admin app)
+        -- Key:         order_id
+        -- Sources:     public.orders, public.people, store_analytics.cfg_store
+        -- Definition:  each order with its amounts, net sales, discount share, the customer's order number, first/repeat flags, cohort month, months since first order, days since the previous order, origin, and period completeness
+        -- Caveats:     Source quirks kept and flagged (T11): 67 orders with quantity 0 (is_zero_quantity, $6,015 revenue) and 1 with discount above subtotal (is_discount_over_subtotal). total_usd is the recorded total (Revenue, D2); total_recomputed_usd = subtotal + tax - discount. Net sales = subtotal - discount (T4). Order number is by ordered_at then order_id (T5). Cohort = first-order month (T3). T6: April 2020 (data ends 2020-04-19) and the current month are flagged incomplete but kept. order_origin = app after cfg_store.historical_end_at
+        WITH orders_src AS (
+          SELECT o.id, o.user_id, o.product_id, o.subtotal, o.tax, o.total, o.discount, o.created_at, o.quantity FROM public.orders o
+        ), people_src AS (
+          SELECT p.id, p.created_at FROM public.people p
+        ), sequenced AS (
+          SELECT os.*,
+                 row_number() OVER (PARTITION BY os.user_id ORDER BY os.created_at, os.id) AS customer_order_number,
+                 lag(os.created_at) OVER (PARTITION BY os.user_id ORDER BY os.created_at, os.id) AS previous_order_at,
+                 min(os.created_at) OVER (PARTITION BY os.user_id) AS first_order_at
+          FROM orders_src os
+        )
+        SELECT
+          CAST(s.id AS bigint) AS order_id,
+          CAST(s.user_id AS integer) AS customer_id,
+          CAST(s.product_id AS integer) AS product_id,
+          s.created_at AS ordered_at,
+          CAST(date_trunc('month', s.created_at) AS date) AS order_month,
+          CAST(s.quantity AS integer) AS quantity,
+          CAST(s.subtotal AS double precision) AS subtotal_usd,
+          CAST(s.tax AS double precision) AS tax_usd,
+          CAST(coalesce(s.discount, 0) AS double precision) AS discount_usd,
+          CAST(s.total AS double precision) AS total_usd,
+          CAST(s.subtotal + s.tax - coalesce(s.discount, 0) AS double precision) AS total_recomputed_usd,
+          CAST(s.subtotal - coalesce(s.discount, 0) AS double precision) AS net_sales_usd,
+          (coalesce(s.discount, 0) > 0) AS is_discounted,
+          (s.quantity = 0) AS is_zero_quantity,
+          (coalesce(s.discount, 0) > s.subtotal) AS is_discount_over_subtotal,
+          CAST(round((coalesce(s.discount, 0) / nullif(s.subtotal, 0))::numeric, 4) AS numeric(6,4)) AS discount_share,
+          CAST(s.customer_order_number AS integer) AS customer_order_number,
+          (s.customer_order_number = 1) AS is_first_order,
+          (s.customer_order_number >= g.repeat_min_orders) AS is_repeat_order,
+          CAST(date_trunc('month', s.first_order_at) AS date) AS cohort_month,
+          CAST((extract(year FROM s.created_at) - extract(year FROM s.first_order_at)) * 12
+             + (extract(month FROM s.created_at) - extract(month FROM s.first_order_at)) AS integer) AS months_since_first_order,
+          CAST(s.created_at::date - s.previous_order_at::date AS integer) AS days_since_previous_order,
+          CAST(CASE WHEN s.created_at <= g.historical_end_at THEN 'historical' ELSE 'app' END AS text) AS order_origin,
+          (s.created_at < ps.created_at) AS is_before_signup,
+          (date_trunc('month', s.created_at) <> date_trunc('month', g.historical_end_at)
+           AND date_trunc('month', s.created_at) < date_trunc('month', current_date)) AS is_complete_period
+        FROM sequenced s
+        LEFT JOIN people_src ps ON ps.id = s.user_id
+        CROSS JOIN store_analytics.cfg_store g
+      lib/type: mbql.stage/native
+    lib/type: mbql/query
+  type: query
+source_database_id: Sample Database
+tags:
+- entity_id: _8FgW3kSqtJ2whcukT-H_
+  position: 0
+  tag_id: 0GDhliPTPcGqM08fFeSsN
+  serdes/meta:
+  - id: _8FgW3kSqtJ2whcukT-H_
+    model: TransformTransformTag
+target:
+  database: Sample Database
+  name: mart_store_fct_order
+  schema: store_analytics
+  type: table
+serdes/meta:
+- id: DpaZVKaVCdj7Z_G_tbti1
+  label: mart_store_fct_order
+  model: Transform

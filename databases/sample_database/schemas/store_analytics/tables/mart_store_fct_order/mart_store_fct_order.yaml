@@ -1,0 +1,434 @@
+caveats: Revenue uses the recorded total. April 2020 (data ends 2020-04-19) and the current month are partial and flagged, not hidden. 67 orders have quantity 0 and 1 has a discount above its subtotal, both flagged. Refreshed every 10 minutes.
+caveats_set: true
+collection_id: librarylibrarydatadat
+created_at: '2026-09-30T17:50:59.983545Z'
+description: One row per order (historical Sample data plus orders added in the Store Admin app), with amounts, net sales, discount share, the customer's order number, first/repeat flags, cohort month, months since first order, days since previous order, origin and period completeness.
+description_set: true
+display_name: Store orders
+entity_type: entity/TransactionTable
+fields:
+- created_at: '2026-09-30T17:51:13.339825Z'
+  description: Month of the customer's first order.
+  description_set: true
+  display_name: Cohort month
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: cohort_month
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:09.178602Z'
+  description: Links to Store customers.
+  description_set: true
+  display_name: Customer
+  fk_target_field_id:
+  - Sample Database
+  - store_analytics
+  - mart_store_dim_customer
+  - customer_id
+  fk_target_field_id_set: true
+  has_field_values: search
+  semantic_type: type/FK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: customer_id
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:12.66517Z'
+  description: 1 for the customer's first order, 2 for the second, and so on (by time, then order id).
+  description_set: true
+  display_name: Customer order number
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: customer_order_number
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:13.80046Z'
+  description: Days since the customer's previous order; empty on first orders.
+  description_set: true
+  display_name: Days since previous order
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: days_since_previous_order
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:12.438122Z'
+  description: Discount / subtotal.
+  description_set: true
+  display_name: Discount share
+  semantic_type: type/Share
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: discount_share
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:10.820769Z'
+  description: Discount, USD; 0 when none.
+  description_set: true
+  display_name: Discount
+  semantic_type: type/Currency
+  semantic_type_set: true
+  settings:
+    currency: USD
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: discount_usd
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:14.258306Z'
+  description: Order dated before the customer's signup (3,373 historical orders).
+  description_set: true
+  display_name: Is before signup
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: is_before_signup
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:14.489123Z'
+  description: False for April 2020 (partial) and the current month; those are shown, just flagged.
+  description_set: true
+  display_name: Is complete period
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: is_complete_period
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:12.206459Z'
+  description: Discount larger than the subtotal (1 historical order). Kept, flagged.
+  description_set: true
+  display_name: Is discount over subtotal
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: is_discount_over_subtotal
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:11.743741Z'
+  display_name: Is discounted
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: is_discounted
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:12.890653Z'
+  display_name: Is first order
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: is_first_order
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:13.112978Z'
+  description: The customer's 2nd or later order.
+  description_set: true
+  display_name: Is repeat order
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: is_repeat_order
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:11.976416Z'
+  description: Quantity is 0 in the source (67 historical orders). Kept, flagged.
+  description_set: true
+  display_name: Is zero quantity
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: is_zero_quantity
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:13.568936Z'
+  description: 0 in the cohort month, 1 the month after, and so on. Use with Cohort month for retention.
+  description_set: true
+  display_name: Months since first order
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: months_since_first_order
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:11.511334Z'
+  description: Subtotal - discount, excluding tax.
+  description_set: true
+  display_name: Net sales
+  semantic_type: type/Currency
+  semantic_type_set: true
+  settings:
+    currency: USD
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: net_sales_usd
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:08.944256Z'
+  display_name: Order ID
+  semantic_type: type/PK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: order_id
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:09.879901Z'
+  display_name: Order month
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: order_month
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:14.029846Z'
+  description: historical (Sample data through 2020-04-19) or app (added in Store Admin).
+  description_set: true
+  display_name: Order origin
+  has_field_values: list
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: order_origin
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:09.647581Z'
+  description: When the order was placed; the date basis for every order metric.
+  description_set: true
+  display_name: Ordered at
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: ordered_at
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:09.417157Z'
+  description: Links to Store products.
+  description_set: true
+  display_name: Product
+  fk_target_field_id:
+  - Sample Database
+  - store_analytics
+  - mart_store_dim_product
+  - product_id
+  fk_target_field_id_set: true
+  has_field_values: search
+  semantic_type: type/FK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: product_id
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:10.1246Z'
+  description: Units ordered; 0 on 67 historical orders (flagged).
+  description_set: true
+  display_name: Quantity
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: quantity
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:10.353245Z'
+  display_name: Subtotal
+  semantic_type: type/Currency
+  semantic_type_set: true
+  settings:
+    currency: USD
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: subtotal_usd
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:10.58488Z'
+  display_name: Tax
+  semantic_type: type/Currency
+  semantic_type_set: true
+  settings:
+    currency: USD
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: tax_usd
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:11.279656Z'
+  description: Subtotal + tax - discount. Differs from the recorded total on most historical orders.
+  description_set: true
+  display_name: Total (recomputed)
+  semantic_type: type/Currency
+  semantic_type_set: true
+  settings:
+    currency: USD
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: total_recomputed_usd
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:11.04964Z'
+  description: The order total as recorded; Revenue sums this.
+  description_set: true
+  display_name: Total (recorded)
+  semantic_type: type/Currency
+  semantic_type_set: true
+  settings:
+    currency: USD
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_fct_order
+    model: Table
+  - id: total_usd
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+is_published: true
+owner_email: ignacio@metabase.com
+serdes/meta:
+- id: Sample Database
+  model: Database
+- id: store_analytics
+  model: Schema
+- id: mart_store_fct_order
+  model: Table
+- id: '1'
+  model: TableUserSettings

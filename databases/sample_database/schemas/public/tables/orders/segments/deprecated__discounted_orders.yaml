@@ -19,10 +19,10 @@ definition:
     - orders
     lib/type: mbql.stage/mbql
   lib/type: mbql/query
-description: 'Orders with a discount above zero (1,915 of 18,760 historical). Owner: ignacio@metabase.com.'
+description: 'Deprecated 2026-09-30: use the Discounted orders segment on the Store orders / Store customers tables (transform layer). Kept until nothing reads it. Orders with a discount above zero (1,915 of 18,760 historical). Owner: ignacio@metabase.com.'
 entity_id: UnoY0HsiDlf5a9Suv0fQd
-name: Discounted orders
+name: 'Deprecated: Discounted orders'
 serdes/meta:
 - id: UnoY0HsiDlf5a9Suv0fQd
-  label: discounted_orders
+  label: deprecated__discounted_orders
   model: Segment

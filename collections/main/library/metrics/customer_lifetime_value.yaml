@@ -1,0 +1,56 @@
+name: Customer lifetime value
+description: 'Self-consistent only, no external reference. Average lifetime revenue per buyer in USD, by cohort (first-order) month. Customers who never ordered are excluded. Older cohorts have had longer to spend. Refreshed every 10 minutes from the store transforms, so orders added in the Store Admin app appear within about 10 minutes. April 2020 (data ends 2020-04-19) and the current month are partial and shown, flagged on Store orders. Owner: ignacio@metabase.com.'
+entity_id: iShTvSUWELFuMSDzxHUoa
+created_at: '2026-09-30T17:52:18.180023Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+display: line
+collection_id: librarylibrarymetrics
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - /
+      - display-name: Customer lifetime value
+        name: customer_lifetime_value
+      - - measure
+        - {}
+        - IGCYiD-AsXEo2M5BfHTm0
+      - - measure
+        - {}
+        - Mi1ocHMN_UA0eX4116zTa
+    breakout:
+    - - field
+      - temporal-unit: month
+      - - Sample Database
+        - store_analytics
+        - mart_store_dim_customer
+        - cohort_month
+    filters:
+    - - =
+      - {}
+      - - field
+        - {}
+        - - Sample Database
+          - store_analytics
+          - mart_store_dim_customer
+          - has_never_ordered
+      - false
+    source-table:
+    - Sample Database
+    - store_analytics
+    - mart_store_dim_customer
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings:
+    '["name","customer_lifetime_value"]':
+      currency: USD
+      number_style: currency
+card_schema: 24
+serdes/meta:
+- id: iShTvSUWELFuMSDzxHUoa
+  label: customer_lifetime_value
+  model: Card
+type: metric

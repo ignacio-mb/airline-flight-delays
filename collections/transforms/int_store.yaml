@@ -1,0 +1,11 @@
+name: int_store
+description: Intermediate Sample store models.
+entity_id: KJLIcVln6xluT8l8WTjw1
+slug: int_store
+created_at: '2026-09-30T17:42:48.571278Z'
+namespace: transforms
+serdes/meta:
+- id: KJLIcVln6xluT8l8WTjw1
+  label: int_store
+  model: Collection
+is_remote_synced: true

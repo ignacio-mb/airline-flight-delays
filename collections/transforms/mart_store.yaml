@@ -1,0 +1,11 @@
+name: mart_store
+description: 'Final-layer Sample store tables: cfg_store, dim_state, dim_customer, dim_product, fct_order.'
+entity_id: APyWq2jEbdO8h9iOMrLam
+slug: mart_store
+created_at: '2026-09-30T17:42:48.844249Z'
+namespace: transforms
+serdes/meta:
+- id: APyWq2jEbdO8h9iOMrLam
+  label: mart_store
+  model: Collection
+is_remote_synced: true

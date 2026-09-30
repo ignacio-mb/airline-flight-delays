@@ -1,0 +1,61 @@
+collection_id: APyWq2jEbdO8h9iOMrLam
+created_at: '2026-09-30T17:44:49.937737Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+description: 'One row per: US state (or territory) where the store has customers Key: state_code Sources: public.people, public.orders Definition: each state with its US Census region, customer count, and sales tax rate = sum(tax) / sum(subtotal) over its customers'' orders Caveats: T8 region mapping; codes outside the 50 states + DC map to Territory. Tax rate is null for a state with no orders; the rate is constant per state in the data (sd < 0.0001)  Owner: ignacio@metabase.com.'
+entity_id: Rky9ncpPgfdHoXj7JzcSq
+indexes: []
+name: mart_store_dim_state
+owner_user_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+source:
+  query:
+    database: Sample Database
+    stages:
+    - native: |
+        -- One row per: US state (or territory) where the store has customers
+        -- Key:         state_code
+        -- Sources:     public.people, public.orders
+        -- Definition:  each state with its US Census region, customer count, and sales tax rate = sum(tax) / sum(subtotal) over its customers' orders
+        -- Caveats:     T8 region mapping; codes outside the 50 states + DC map to Territory. Tax rate is null for a state with no orders; the rate is constant per state in the data (sd < 0.0001)
+        WITH people_src AS (
+          SELECT p.id, p.state FROM public.people p
+        ), orders_src AS (
+          SELECT o.user_id, o.tax, o.subtotal FROM public.orders o
+        ), customers_by_state AS (
+          SELECT ps.state, count(*) AS customers FROM people_src ps GROUP BY ps.state
+        ), tax_by_state AS (
+          SELECT ps.state, sum(os.tax) AS tax, sum(os.subtotal) AS subtotal, count(*) AS orders
+          FROM orders_src os JOIN people_src ps ON ps.id = os.user_id
+          GROUP BY ps.state
+        )
+        SELECT
+          CAST(c.state AS text) AS state_code,
+          CAST(CASE
+            WHEN c.state IN ('CT','ME','MA','NH','RI','VT','NJ','NY','PA') THEN 'Northeast'
+            WHEN c.state IN ('IL','IN','MI','OH','WI','IA','KS','MN','MO','NE','ND','SD') THEN 'Midwest'
+            WHEN c.state IN ('DE','DC','FL','GA','MD','NC','SC','VA','WV','AL','KY','MS','TN','AR','LA','OK','TX') THEN 'South'
+            WHEN c.state IN ('AZ','CO','ID','MT','NV','NM','UT','WY','AK','CA','HI','OR','WA') THEN 'West'
+            ELSE 'Territory' END AS text) AS census_region,
+          CAST(c.customers AS integer) AS customers,
+          CAST(round((t.tax / nullif(t.subtotal, 0))::numeric, 4) AS numeric(6,4)) AS tax_rate
+        FROM customers_by_state c
+        LEFT JOIN tax_by_state t ON t.state = c.state
+      lib/type: mbql.stage/native
+    lib/type: mbql/query
+  type: query
+source_database_id: Sample Database
+tags:
+- entity_id: TONAcTheapdrLYmNSYiwu
+  position: 0
+  tag_id: 0GDhliPTPcGqM08fFeSsN
+  serdes/meta:
+  - id: TONAcTheapdrLYmNSYiwu
+    model: TransformTransformTag
+target:
+  database: Sample Database
+  name: mart_store_dim_state
+  schema: store_analytics
+  type: table
+serdes/meta:
+- id: Rky9ncpPgfdHoXj7JzcSq
+  label: mart_store_dim_state
+  model: Transform

@@ -1,0 +1,30 @@
+created_at: '2026-09-30T17:51:48.576711Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - count-where
+      - name: repeat_buyers
+      - - =
+        - {}
+        - - field
+          - {}
+          - - Sample Database
+            - store_analytics
+            - mart_store_dim_customer
+            - is_repeat_buyer
+        - true
+    source-table:
+    - Sample Database
+    - store_analytics
+    - mart_store_dim_customer
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Customers with 2+ lifetime orders (T5). Owner: ignacio@metabase.com.'
+entity_id: MpMihiFZl83vxirNfEAR_
+name: Repeat buyers
+serdes/meta:
+- id: MpMihiFZl83vxirNfEAR_
+  label: repeat_buyers
+  model: Measure

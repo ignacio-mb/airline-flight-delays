@@ -1,0 +1,45 @@
+collection_id: APyWq2jEbdO8h9iOMrLam
+created_at: '2026-09-30T17:44:12.697736Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+description: 'One row per: nothing; a single row of constants for the store chain Key: none (exactly one row) Sources: none Definition: named constants every store model cross-joins, each with its decision id Caveats: change a value with mb transform update, run the store transform tests, then run the rde_store job  Owner: ignacio@metabase.com.'
+entity_id: nSiTnNG7idROCMsvu2PZl
+indexes: []
+name: cfg_store
+owner_user_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+source:
+  query:
+    database: Sample Database
+    stages:
+    - native: |
+        -- One row per: nothing; a single row of constants for the store chain
+        -- Key:         none (exactly one row)
+        -- Sources:     none
+        -- Definition:  named constants every store model cross-joins, each with its decision id
+        -- Caveats:     change a value with mb transform update, run the store transform tests, then run the rde_store job
+        SELECT
+          CAST(TIMESTAMP '2020-04-19 23:59:59' AS timestamp) AS historical_end_at,
+          CAST('Historical Sample data ends 2020-04-19; later orders come from the Store Admin app (T6)' AS text) AS historical_end_at_note,
+          CAST(DATE '2020-04-19' AS date) AS age_reference_date,
+          CAST('T7: age bands are computed as of the end of the historical data, so they do not drift' AS text) AS age_reference_date_note,
+          CAST(2 AS integer) AS repeat_min_orders,
+          CAST('T5: a repeat buyer has at least this many orders; a repeat order is order number >= this' AS text) AS repeat_min_orders_note
+      lib/type: mbql.stage/native
+    lib/type: mbql/query
+  type: query
+source_database_id: Sample Database
+tags:
+- entity_id: zvK7HVOsLMgWPl3jtfCh3
+  position: 0
+  tag_id: 0GDhliPTPcGqM08fFeSsN
+  serdes/meta:
+  - id: zvK7HVOsLMgWPl3jtfCh3
+    model: TransformTransformTag
+target:
+  database: Sample Database
+  name: cfg_store
+  schema: store_analytics
+  type: table
+serdes/meta:
+- id: nSiTnNG7idROCMsvu2PZl
+  label: cfg_store
+  model: Transform

@@ -1,0 +1,196 @@
+caveats: Average review rating is empty for the 24 unreviewed products. Catalog rating is the products table's own score, not the review average.
+caveats_set: true
+collection_id: librarylibrarydatadat
+created_at: '2026-09-30T17:50:59.520324Z'
+description: 'One row per product (200): category, vendor, list price, price band, review count and average review rating.'
+description_set: true
+display_name: Store products
+entity_type: entity/ProductTable
+fields:
+- created_at: '2026-09-30T17:51:03.118796Z'
+  description: Mean review stars, 1-5; empty when unreviewed.
+  description_set: true
+  display_name: Average review rating
+  semantic_type: type/Score
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_product
+    model: Table
+  - id: avg_review_rating
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:03.354162Z'
+  description: The products table's own rating, not the review average.
+  description_set: true
+  display_name: Catalog rating
+  semantic_type: type/Score
+  semantic_type_set: true
+  visibility_type: details-only
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_product
+    model: Table
+  - id: catalog_rating
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:02.184388Z'
+  display_name: EAN
+  visibility_type: details-only
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_product
+    model: Table
+  - id: ean
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:02.412666Z'
+  display_name: List price
+  semantic_type: type/Currency
+  semantic_type_set: true
+  settings:
+    currency: USD
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_product
+    model: Table
+  - id: list_price_usd
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:02.646082Z'
+  description: Under $30, $30-50, $50-75, $75+ by list price.
+  description_set: true
+  display_name: Price band
+  has_field_values: list
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_product
+    model: Table
+  - id: price_band
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:01.71518Z'
+  display_name: Category
+  has_field_values: list
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_product
+    model: Table
+  - id: product_category
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:03.587108Z'
+  display_name: Product created at
+  visibility_type: details-only
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_product
+    model: Table
+  - id: product_created_at
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:01.241384Z'
+  display_name: Product ID
+  semantic_type: type/PK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_product
+    model: Table
+  - id: product_id
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:01.472005Z'
+  display_name: Product
+  has_field_values: search
+  semantic_type: type/Title
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_product
+    model: Table
+  - id: product_title
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:02.882132Z'
+  description: Number of reviews.
+  description_set: true
+  display_name: Reviews
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_product
+    model: Table
+  - id: review_count
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:01.95166Z'
+  display_name: Vendor
+  has_field_values: search
+  semantic_type: type/Company
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_product
+    model: Table
+  - id: vendor
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+is_published: true
+owner_email: ignacio@metabase.com
+serdes/meta:
+- id: Sample Database
+  model: Database
+- id: store_analytics
+  model: Schema
+- id: mart_store_dim_product
+  model: Table
+- id: '1'
+  model: TableUserSettings

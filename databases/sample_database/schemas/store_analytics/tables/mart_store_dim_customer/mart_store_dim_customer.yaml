@@ -1,0 +1,366 @@
+caveats: 'Cohort is the first-order month, not signup: 18% of orders predate their customer''s signup date. Age band is as of 2020-04-19. Contains names and emails (visible by decision). Refreshed every 10 minutes, so app orders appear within about 10 minutes.'
+caveats_set: true
+collection_id: librarylibrarydatadat
+created_at: '2026-09-30T17:50:59.753247Z'
+description: 'One row per customer (2,500): location and Census region, acquisition source, age band, signup, first and last order, lifetime orders and revenue, cohort month, and buyer status (never ordered, one-time, repeat).'
+description_set: true
+display_name: Store customers
+entity_type: entity/UserTable
+fields:
+- created_at: '2026-09-30T17:51:05.9478Z'
+  description: How the customer found the store.
+  description_set: true
+  display_name: Acquisition source
+  has_field_values: list
+  semantic_type: type/Source
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: acquisition_source
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:06.415843Z'
+  description: 'Age as of 2020-04-19: 18-24, 25-34, 35-44, 45-54, 55+.'
+  description_set: true
+  display_name: Age band
+  has_field_values: list
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: age_band
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:06.181511Z'
+  display_name: Birth date
+  visibility_type: details-only
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: birth_date
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:08.71392Z'
+  description: Never ordered, One-time buyer, or Repeat buyer.
+  description_set: true
+  display_name: Buyer status
+  has_field_values: list
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: buyer_status
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:05.012174Z'
+  display_name: Census region
+  has_field_values: list
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: census_region
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:04.536352Z'
+  display_name: City
+  has_field_values: search
+  semantic_type: type/City
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: city
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:07.56065Z'
+  description: Month of the customer's first order; empty for customers who never ordered.
+  description_set: true
+  display_name: Cohort month
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: cohort_month
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:03.814754Z'
+  display_name: Customer ID
+  semantic_type: type/PK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: customer_id
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:04.046051Z'
+  display_name: Customer
+  has_field_values: search
+  semantic_type: type/Name
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: customer_name
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:04.297161Z'
+  display_name: Email
+  has_field_values: search
+  semantic_type: type/Email
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: email
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:07.097769Z'
+  display_name: First order at
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: first_order_at
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:08.479057Z'
+  display_name: Has never ordered
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: has_never_ordered
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:08.248578Z'
+  description: Two or more lifetime orders.
+  description_set: true
+  display_name: Is repeat buyer
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: is_repeat_buyer
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:07.328383Z'
+  display_name: Last order at
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: last_order_at
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:05.473642Z'
+  display_name: Latitude
+  semantic_type: type/Latitude
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: latitude
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:07.788773Z'
+  display_name: Lifetime orders
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: lifetime_orders
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:08.019279Z'
+  description: Sum of recorded order totals, USD.
+  description_set: true
+  display_name: Lifetime revenue
+  semantic_type: type/Currency
+  semantic_type_set: true
+  settings:
+    currency: USD
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: lifetime_revenue_usd
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:05.708662Z'
+  display_name: Longitude
+  semantic_type: type/Longitude
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: longitude
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:06.644156Z'
+  description: Signup timestamp (people.created_at). The date basis for New customers.
+  description_set: true
+  display_name: Signed up at
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: signed_up_at
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:06.873876Z'
+  display_name: Signup month
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: signup_month
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:04.777755Z'
+  description: Links to Store states for region and tax rate.
+  description_set: true
+  display_name: State
+  fk_target_field_id:
+  - Sample Database
+  - store_analytics
+  - mart_store_dim_state
+  - state_code
+  fk_target_field_id_set: true
+  has_field_values: list
+  semantic_type: type/FK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: state_code
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:05.241816Z'
+  display_name: Zip
+  semantic_type: type/ZipCode
+  semantic_type_set: true
+  visibility_type: details-only
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_customer
+    model: Table
+  - id: zip
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+is_published: true
+owner_email: ignacio@metabase.com
+serdes/meta:
+- id: Sample Database
+  model: Database
+- id: store_analytics
+  model: Schema
+- id: mart_store_dim_customer
+  model: Table
+- id: '1'
+  model: TableUserSettings

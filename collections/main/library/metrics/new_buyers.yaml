@@ -1,0 +1,38 @@
+name: New buyers
+description: 'Self-consistent only, no external reference. Customers placing their first order in the period, by first-order date (1,747 all time). The cohort basis for retention (T3). Refreshed every 10 minutes from the store transforms, so orders added in the Store Admin app appear within about 10 minutes. April 2020 (data ends 2020-04-19) and the current month are partial and shown, flagged on Store orders. Owner: ignacio@metabase.com.'
+entity_id: T0ibQ9ATyzXSsDfA2U1sg
+created_at: '2026-09-30T17:52:17.184073Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+display: line
+collection_id: librarylibrarymetrics
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - measure
+      - display-name: New buyers
+        name: first_orders
+      - 6N7FyR7CzQfjbF6Fu2REh
+    breakout:
+    - - field
+      - temporal-unit: month
+      - - Sample Database
+        - store_analytics
+        - mart_store_fct_order
+        - ordered_at
+    source-table:
+    - Sample Database
+    - store_analytics
+    - mart_store_fct_order
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings: null
+card_schema: 24
+serdes/meta:
+- id: T0ibQ9ATyzXSsDfA2U1sg
+  label: new_buyers
+  model: Card
+type: metric

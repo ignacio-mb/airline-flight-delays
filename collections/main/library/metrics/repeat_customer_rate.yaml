@@ -1,0 +1,56 @@
+name: Repeat customer rate
+description: 'Self-consistent only, no external reference. Share of buyers with 2+ lifetime orders, by cohort (first-order) month (94.9% of buyers overall). Recent cohorts read low until they have had time to reorder. Refreshed every 10 minutes from the store transforms, so orders added in the Store Admin app appear within about 10 minutes. April 2020 (data ends 2020-04-19) and the current month are partial and shown, flagged on Store orders. Owner: ignacio@metabase.com.'
+entity_id: DW-M6XbiZ8EIJqPNY6-o9
+created_at: '2026-09-30T17:52:17.833547Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+display: line
+collection_id: librarylibrarymetrics
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - /
+      - display-name: Repeat customer rate
+        name: repeat_customer_rate
+      - - measure
+        - {}
+        - MpMihiFZl83vxirNfEAR_
+      - - measure
+        - {}
+        - Mi1ocHMN_UA0eX4116zTa
+    breakout:
+    - - field
+      - temporal-unit: month
+      - - Sample Database
+        - store_analytics
+        - mart_store_dim_customer
+        - cohort_month
+    filters:
+    - - =
+      - {}
+      - - field
+        - {}
+        - - Sample Database
+          - store_analytics
+          - mart_store_dim_customer
+          - has_never_ordered
+      - false
+    source-table:
+    - Sample Database
+    - store_analytics
+    - mart_store_dim_customer
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings:
+    '["name","repeat_customer_rate"]':
+      decimals: 1
+      number_style: percent
+card_schema: 24
+serdes/meta:
+- id: DW-M6XbiZ8EIJqPNY6-o9
+  label: repeat_customer_rate
+  model: Card
+type: metric

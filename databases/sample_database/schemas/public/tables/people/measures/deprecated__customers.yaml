@@ -12,10 +12,10 @@ definition:
     - people
     lib/type: mbql.stage/mbql
   lib/type: mbql/query
-description: 'Count of people (customers) by signup date. Owner: ignacio@metabase.com.'
+description: 'Deprecated 2026-09-30: use the Customers measure on the Store orders / Store customers tables (transform layer). Kept until nothing reads it. Count of people (customers) by signup date. Owner: ignacio@metabase.com.'
 entity_id: 5H-7znzQ_KHfCMo0Y6CIb
-name: Customers
+name: 'Deprecated: Customers'
 serdes/meta:
 - id: 5H-7znzQ_KHfCMo0Y6CIb
-  label: customers
+  label: deprecated__customers
   model: Measure

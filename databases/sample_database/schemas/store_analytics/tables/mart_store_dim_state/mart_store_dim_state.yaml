@@ -1,0 +1,87 @@
+caveats: Tax rate = tax / subtotal over the state's orders; empty for a state with no orders. Refreshed every 10 minutes.
+caveats_set: true
+collection_id: librarylibrarydatadat
+created_at: '2026-09-30T17:50:59.263168Z'
+description: 'One row per US state where the store has customers (49): Census region, customer count, and the sales tax rate its orders carry.'
+description_set: true
+display_name: Store states
+entity_type: entity/GenericTable
+fields:
+- created_at: '2026-09-30T17:51:00.499524Z'
+  description: 'US Census region: Northeast, Midwest, South, West (Territory otherwise).'
+  description_set: true
+  display_name: Census region
+  has_field_values: list
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_state
+    model: Table
+  - id: census_region
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:00.750957Z'
+  description: Customers living in the state.
+  description_set: true
+  display_name: Customers
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_state
+    model: Table
+  - id: customers
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:00.236823Z'
+  description: Two-letter state code.
+  description_set: true
+  display_name: State
+  semantic_type: type/PK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_state
+    model: Table
+  - id: state_code
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:51:01.000335Z'
+  description: Sales tax rate on the state's orders (tax / subtotal); the Store Admin app applies the same rate to new orders.
+  description_set: true
+  display_name: Tax rate
+  semantic_type: type/Share
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: store_analytics
+    model: Schema
+  - id: mart_store_dim_state
+    model: Table
+  - id: tax_rate
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+is_published: true
+owner_email: ignacio@metabase.com
+serdes/meta:
+- id: Sample Database
+  model: Database
+- id: store_analytics
+  model: Schema
+- id: mart_store_dim_state
+  model: Table
+- id: '1'
+  model: TableUserSettings

@@ -1,0 +1,28 @@
+created_at: '2026-09-30T17:51:51.364938Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Sample Database
+  stages:
+  - filters:
+    - - =
+      - {}
+      - - field
+        - {}
+        - - Sample Database
+          - store_analytics
+          - mart_store_dim_customer
+          - has_never_ordered
+      - true
+    source-table:
+    - Sample Database
+    - store_analytics
+    - mart_store_dim_customer
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Customers with no orders (753); signed up but never bought. Owner: ignacio@metabase.com.'
+entity_id: VuaxeKRlKFpoZb_UyG9rf
+name: Never ordered
+serdes/meta:
+- id: VuaxeKRlKFpoZb_UyG9rf
+  label: never_ordered
+  model: Segment

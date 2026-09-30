@@ -1,0 +1,60 @@
+collection_id: APyWq2jEbdO8h9iOMrLam
+created_at: '2026-09-30T17:44:50.294771Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+description: 'One row per: product in the catalog Key: product_id Sources: public.products, public.reviews Definition: each product with category, vendor, list price, price band, review count and average review rating Caveats: T9: avg_review_rating is null (not 0) for products without reviews (24 of 200). catalog_rating is the products table''s own rating, kept for reference. Price bands: under $30, $30-50, $50-75, $75+  Owner: ignacio@metabase.com.'
+entity_id: QyfksS08NZus78A6cea3L
+indexes: []
+name: mart_store_dim_product
+owner_user_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+source:
+  query:
+    database: Sample Database
+    stages:
+    - native: |
+        -- One row per: product in the catalog
+        -- Key:         product_id
+        -- Sources:     public.products, public.reviews
+        -- Definition:  each product with category, vendor, list price, price band, review count and average review rating
+        -- Caveats:     T9: avg_review_rating is null (not 0) for products without reviews (24 of 200). catalog_rating is the products table's own rating, kept for reference. Price bands: under $30, $30-50, $50-75, $75+
+        WITH products_src AS (
+          SELECT p.id, p.ean, p.title, p.category, p.vendor, p.price, p.rating, p.created_at FROM public.products p
+        ), reviews_src AS (
+          SELECT r.product_id, r.rating FROM public.reviews r
+        ), review_stats AS (
+          SELECT rs.product_id, count(*) AS review_count, avg(rs.rating) AS avg_rating
+          FROM reviews_src rs GROUP BY rs.product_id
+        )
+        SELECT
+          CAST(ps.id AS integer) AS product_id,
+          CAST(ps.title AS text) AS product_title,
+          CAST(ps.category AS text) AS product_category,
+          CAST(ps.vendor AS text) AS vendor,
+          CAST(ps.ean AS text) AS ean,
+          CAST(ps.price AS double precision) AS list_price_usd,
+          CAST(CASE WHEN ps.price < 30 THEN 'Under $30' WHEN ps.price < 50 THEN '$30-50' WHEN ps.price < 75 THEN '$50-75' ELSE '$75+' END AS text) AS price_band,
+          CAST(coalesce(rv.review_count, 0) AS integer) AS review_count,
+          CAST(round(rv.avg_rating::numeric, 2) AS numeric(4,2)) AS avg_review_rating,
+          CAST(ps.rating AS double precision) AS catalog_rating,
+          ps.created_at AS product_created_at
+        FROM products_src ps
+        LEFT JOIN review_stats rv ON rv.product_id = ps.id
+      lib/type: mbql.stage/native
+    lib/type: mbql/query
+  type: query
+source_database_id: Sample Database
+tags:
+- entity_id: P9PLd2SubHO-QO5t21c0v
+  position: 0
+  tag_id: 0GDhliPTPcGqM08fFeSsN
+  serdes/meta:
+  - id: P9PLd2SubHO-QO5t21c0v
+    model: TransformTransformTag
+target:
+  database: Sample Database
+  name: mart_store_dim_product
+  schema: store_analytics
+  type: table
+serdes/meta:
+- id: QyfksS08NZus78A6cea3L
+  label: mart_store_dim_product
+  model: Transform

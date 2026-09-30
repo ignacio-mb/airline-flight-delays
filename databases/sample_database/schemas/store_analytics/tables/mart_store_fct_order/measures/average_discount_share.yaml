@@ -1,0 +1,27 @@
+created_at: '2026-09-30T17:51:47.734634Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - avg
+      - name: avg_discount_share
+      - - field
+        - {}
+        - - Sample Database
+          - store_analytics
+          - mart_store_fct_order
+          - discount_share
+    source-table:
+    - Sample Database
+    - store_analytics
+    - mart_store_fct_order
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Mean discount / subtotal. Use on discounted orders. Owner: ignacio@metabase.com.'
+entity_id: UbN6njKarBH0rWnjTXI1y
+name: Average discount share
+serdes/meta:
+- id: UbN6njKarBH0rWnjTXI1y
+  label: average_discount_share
+  model: Measure

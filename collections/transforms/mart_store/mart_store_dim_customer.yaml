@@ -1,0 +1,81 @@
+collection_id: APyWq2jEbdO8h9iOMrLam
+created_at: '2026-09-30T17:46:14.927556Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+description: 'One row per: customer (person) in the store Key: customer_id Sources: public.people, public.orders, store_analytics.mart_store_dim_state, store_analytics.cfg_store Definition: each customer with location, region, acquisition source, age band, signup, first and last order, lifetime orders and revenue, cohort month, and buyer status Caveats: T3: cohort_month is the month of the first order, not signup (3,373 orders predate their customer''s signup). T5: repeat buyer = lifetime_orders >= cfg_store.repeat_min_orders (2). T7: age band as of cfg_store.age_reference_date (2020-04-19). Lifetime revenue = sum of recorded order totals. Street address and password are not carried  Owner: ignacio@metabase.com.'
+entity_id: qMKgBcyPH4fYFm5TUkaIm
+indexes: []
+name: mart_store_dim_customer
+owner_user_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+source:
+  query:
+    database: Sample Database
+    stages:
+    - native: |
+        -- One row per: customer (person) in the store
+        -- Key:         customer_id
+        -- Sources:     public.people, public.orders, store_analytics.mart_store_dim_state, store_analytics.cfg_store
+        -- Definition:  each customer with location, region, acquisition source, age band, signup, first and last order, lifetime orders and revenue, cohort month, and buyer status
+        -- Caveats:     T3: cohort_month is the month of the first order, not signup (3,373 orders predate their customer's signup). T5: repeat buyer = lifetime_orders >= cfg_store.repeat_min_orders (2). T7: age band as of cfg_store.age_reference_date (2020-04-19). Lifetime revenue = sum of recorded order totals. Street address and password are not carried
+        WITH people_src AS (
+          SELECT p.id, p.name, p.email, p.city, p.state, p.zip, p.source, p.birth_date, p.latitude, p.longitude, p.created_at FROM public.people p
+        ), orders_src AS (
+          SELECT o.user_id, o.total, o.created_at FROM public.orders o
+        ), lifetime AS (
+          SELECT os.user_id, count(*) AS orders, sum(os.total) AS revenue, min(os.created_at) AS first_order_at, max(os.created_at) AS last_order_at
+          FROM orders_src os GROUP BY os.user_id
+        )
+        SELECT
+          CAST(ps.id AS integer) AS customer_id,
+          CAST(ps.name AS text) AS customer_name,
+          CAST(ps.email AS text) AS email,
+          CAST(ps.city AS text) AS city,
+          CAST(ps.state AS text) AS state_code,
+          CAST(ds.census_region AS text) AS census_region,
+          CAST(ps.zip AS text) AS zip,
+          CAST(ps.latitude AS double precision) AS latitude,
+          CAST(ps.longitude AS double precision) AS longitude,
+          CAST(ps.source AS text) AS acquisition_source,
+          ps.birth_date,
+          CAST(CASE
+            WHEN ps.birth_date IS NULL THEN 'Unknown'
+            WHEN extract(year FROM age(g.age_reference_date, ps.birth_date)) < 25 THEN '18-24'
+            WHEN extract(year FROM age(g.age_reference_date, ps.birth_date)) < 35 THEN '25-34'
+            WHEN extract(year FROM age(g.age_reference_date, ps.birth_date)) < 45 THEN '35-44'
+            WHEN extract(year FROM age(g.age_reference_date, ps.birth_date)) < 55 THEN '45-54'
+            ELSE '55+' END AS text) AS age_band,
+          ps.created_at AS signed_up_at,
+          CAST(date_trunc('month', ps.created_at) AS date) AS signup_month,
+          lt.first_order_at,
+          lt.last_order_at,
+          CAST(date_trunc('month', lt.first_order_at) AS date) AS cohort_month,
+          CAST(coalesce(lt.orders, 0) AS integer) AS lifetime_orders,
+          CAST(coalesce(lt.revenue, 0) AS double precision) AS lifetime_revenue_usd,
+          (coalesce(lt.orders, 0) >= g.repeat_min_orders) AS is_repeat_buyer,
+          (lt.user_id IS NULL) AS has_never_ordered,
+          CAST(CASE WHEN lt.user_id IS NULL THEN 'Never ordered'
+                    WHEN lt.orders >= g.repeat_min_orders THEN 'Repeat buyer'
+                    ELSE 'One-time buyer' END AS text) AS buyer_status
+        FROM people_src ps
+        LEFT JOIN lifetime lt ON lt.user_id = ps.id
+        LEFT JOIN store_analytics.mart_store_dim_state ds ON ds.state_code = ps.state
+        CROSS JOIN store_analytics.cfg_store g
+      lib/type: mbql.stage/native
+    lib/type: mbql/query
+  type: query
+source_database_id: Sample Database
+tags:
+- entity_id: CN0LCWX61QxecJf9sMUE5
+  position: 0
+  tag_id: 0GDhliPTPcGqM08fFeSsN
+  serdes/meta:
+  - id: CN0LCWX61QxecJf9sMUE5
+    model: TransformTransformTag
+target:
+  database: Sample Database
+  name: mart_store_dim_customer
+  schema: store_analytics
+  type: table
+serdes/meta:
+- id: qMKgBcyPH4fYFm5TUkaIm
+  label: mart_store_dim_customer
+  model: Transform

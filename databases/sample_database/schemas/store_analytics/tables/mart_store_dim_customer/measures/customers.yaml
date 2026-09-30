@@ -1,21 +1,21 @@
-created_at: '2026-09-30T17:09:00.013326Z'
+created_at: '2026-09-30T17:51:48.003229Z'
 creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
 definition:
   database: Sample Database
   stages:
   - aggregation:
     - - count
-      - name: orders
+      - name: customers
     source-table:
     - Sample Database
-    - public
-    - orders
+    - store_analytics
+    - mart_store_dim_customer
     lib/type: mbql.stage/mbql
   lib/type: mbql/query
-description: 'Count of orders. Owner: ignacio@metabase.com.'
-entity_id: ve74IGZ7Vdj5Or53s90BK
-name: Orders
+description: 'Count of customers. Owner: ignacio@metabase.com.'
+entity_id: kg7Qs-LNljJ9fBgJO7r7w
+name: Customers
 serdes/meta:
-- id: ve74IGZ7Vdj5Or53s90BK
-  label: orders
+- id: kg7Qs-LNljJ9fBgJO7r7w
+  label: customers
   model: Measure

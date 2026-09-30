@@ -1,0 +1,41 @@
+name: Net sales
+description: 'Self-consistent only, no external reference. Subtotal minus discount in USD, excluding tax ($1,438,310 all time). Not comparable to Revenue, which includes tax and uses the recorded total. Refreshed every 10 minutes from the store transforms, so orders added in the Store Admin app appear within about 10 minutes. April 2020 (data ends 2020-04-19) and the current month are partial and shown, flagged on Store orders. Owner: ignacio@metabase.com.'
+entity_id: B5Qlb-osI8Pyf1e84bak2
+created_at: '2026-09-30T17:52:16.871531Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+display: line
+collection_id: librarylibrarymetrics
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - measure
+      - display-name: Net sales
+        name: net_sales
+      - W_6kIUo7-6uLigKeDpc9L
+    breakout:
+    - - field
+      - temporal-unit: month
+      - - Sample Database
+        - store_analytics
+        - mart_store_fct_order
+        - ordered_at
+    source-table:
+    - Sample Database
+    - store_analytics
+    - mart_store_fct_order
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings:
+    '["name","net_sales"]':
+      currency: USD
+      number_style: currency
+card_schema: 24
+serdes/meta:
+- id: B5Qlb-osI8Pyf1e84bak2
+  label: net_sales
+  model: Card
+type: metric

@@ -1,0 +1,27 @@
+created_at: '2026-09-30T17:51:48.838351Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - sum
+      - name: lifetime_revenue
+      - - field
+        - {}
+        - - Sample Database
+          - store_analytics
+          - mart_store_dim_customer
+          - lifetime_revenue_usd
+    source-table:
+    - Sample Database
+    - store_analytics
+    - mart_store_dim_customer
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Sum of customers'' lifetime revenue (recorded totals), USD. Owner: ignacio@metabase.com.'
+entity_id: IGCYiD-AsXEo2M5BfHTm0
+name: Lifetime revenue
+serdes/meta:
+- id: IGCYiD-AsXEo2M5BfHTm0
+  label: lifetime_revenue
+  model: Measure

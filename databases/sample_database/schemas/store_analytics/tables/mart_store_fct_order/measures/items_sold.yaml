@@ -1,4 +1,4 @@
-created_at: '2026-09-30T17:09:01.295352Z'
+created_at: '2026-09-30T17:51:46.410717Z'
 creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
 definition:
   database: Sample Database
@@ -9,19 +9,19 @@ definition:
       - - field
         - {}
         - - Sample Database
-          - public
-          - orders
+          - store_analytics
+          - mart_store_fct_order
           - quantity
     source-table:
     - Sample Database
-    - public
-    - orders
+    - store_analytics
+    - mart_store_fct_order
     lib/type: mbql.stage/mbql
   lib/type: mbql/query
-description: 'Sum of quantity across orders. Owner: ignacio@metabase.com.'
-entity_id: JSLqANxCPCIC9tqFPZjEa
+description: 'Sum of quantity (67 historical orders have 0). Owner: ignacio@metabase.com.'
+entity_id: TJ8B4kiyh-ZY7kt1wdK_T
 name: Items sold
 serdes/meta:
-- id: JSLqANxCPCIC9tqFPZjEa
+- id: TJ8B4kiyh-ZY7kt1wdK_T
   label: items_sold
   model: Measure

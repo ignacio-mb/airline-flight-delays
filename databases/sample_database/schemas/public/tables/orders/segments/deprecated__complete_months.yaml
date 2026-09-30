@@ -22,10 +22,10 @@ definition:
     - orders
     lib/type: mbql.stage/mbql
   lib/type: mbql/query
-description: 'Orders outside April 2020, the partial month where the historical data ends (2020-04-19; 344 orders vs ~540 a month). Use for monthly trends; app orders are kept. Owner: ignacio@metabase.com.'
+description: 'Deprecated 2026-09-30: use the Complete periods segment on the Store orders / Store customers tables (transform layer). Kept until nothing reads it. Orders outside April 2020, the partial month where the historical data ends (2020-04-19; 344 orders vs ~540 a month). Use for monthly trends; app orders are kept. Owner: ignacio@metabase.com.'
 entity_id: MAmM6sKUy3R1cqRrfUMzL
-name: Complete months
+name: 'Deprecated: Complete months'
 serdes/meta:
 - id: MAmM6sKUy3R1cqRrfUMzL
-  label: complete_months
+  label: deprecated__complete_months
   model: Segment
