@@ -1,0 +1,40 @@
+name: TaxBaseByCustomer
+entity_id: pmsXqza1AqwvJ7vgFd3Fd
+created_at: '2026-09-30T17:29:35.240726Z'
+creator_id: api-key-user-9f95b91a-1343-4c1b-b7d1-13e7675650d3@api-key.invalid
+display: table
+collection_id: T7Yhwr5OIeX_3dNJppku9
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - measure
+      - display-name: Tax collected
+      - 8hjjOEnPpnDN4qKyNTR6b
+    - - measure
+      - display-name: Subtotal
+      - 604I_zlR26593m9U0mvxW
+    breakout:
+    - - field
+      - base-type: type/Integer
+        effective-type: type/Integer
+      - - Sample Database
+        - public
+        - orders
+        - user_id
+    source-table:
+    - Sample Database
+    - public
+    - orders
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings: null
+card_schema: 24
+serdes/meta:
+- id: pmsXqza1AqwvJ7vgFd3Fd
+  label: taxbasebycustomer
+  model: Card
+type: question

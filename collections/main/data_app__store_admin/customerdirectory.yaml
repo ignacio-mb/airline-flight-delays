@@ -1,0 +1,99 @@
+name: CustomerDirectory
+entity_id: vQMbZuotcGwJ7csqEJGDz
+created_at: '2026-09-30T17:29:34.501088Z'
+creator_id: api-key-user-9f95b91a-1343-4c1b-b7d1-13e7675650d3@api-key.invalid
+display: table
+collection_id: T7Yhwr5OIeX_3dNJppku9
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Sample Database
+  stages:
+  - fields:
+    - - field
+      - base-type: type/BigInteger
+        effective-type: type/BigInteger
+      - - Sample Database
+        - public
+        - people
+        - id
+    - - field
+      - base-type: type/Text
+        effective-type: type/Text
+      - - Sample Database
+        - public
+        - people
+        - name
+    - - field
+      - base-type: type/Text
+        effective-type: type/Text
+      - - Sample Database
+        - public
+        - people
+        - email
+    - - field
+      - base-type: type/Text
+        effective-type: type/Text
+      - - Sample Database
+        - public
+        - people
+        - address
+    - - field
+      - base-type: type/Text
+        effective-type: type/Text
+      - - Sample Database
+        - public
+        - people
+        - city
+    - - field
+      - base-type: type/Text
+        effective-type: type/Text
+      - - Sample Database
+        - public
+        - people
+        - state
+    - - field
+      - base-type: type/Text
+        effective-type: type/Text
+      - - Sample Database
+        - public
+        - people
+        - zip
+    - - field
+      - base-type: type/Date
+        effective-type: type/Date
+      - - Sample Database
+        - public
+        - people
+        - birth_date
+    - - field
+      - base-type: type/Text
+        effective-type: type/Text
+      - - Sample Database
+        - public
+        - people
+        - source
+    order-by:
+    - - asc
+      - {}
+      - - field
+        - base-type: type/Text
+          effective-type: type/Text
+        - - Sample Database
+          - public
+          - people
+          - name
+    source-table:
+    - Sample Database
+    - public
+    - people
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings: null
+card_schema: 24
+serdes/meta:
+- id: vQMbZuotcGwJ7csqEJGDz
+  label: customerdirectory
+  model: Card
+type: question

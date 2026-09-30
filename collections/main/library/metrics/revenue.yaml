@@ -38,4 +38,308 @@ serdes/meta:
 - id: 95ZVRqVyanCYZGhbGQpF8
   label: revenue
   model: Card
+dimension_mappings:
+- dimension-id: 6c2871de-3e12-4786-aa98-70ad274a77c2
+  table-id:
+  - Sample Database
+  - public
+  - orders
+  target:
+  - field
+  - base-type: type/BigInteger
+    effective-type: type/BigInteger
+  - - Sample Database
+    - public
+    - orders
+    - id
+  type: table
+- dimension-id: c6698479-5a66-4cd1-ac43-50c94c176db9
+  table-id:
+  - Sample Database
+  - public
+  - orders
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Sample Database
+    - public
+    - orders
+    - user_id
+  type: table
+- dimension-id: aa75fe58-2d4f-4e84-8345-e6938824f776
+  table-id:
+  - Sample Database
+  - public
+  - orders
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Sample Database
+    - public
+    - orders
+    - product_id
+  type: table
+- dimension-id: ef7ea28c-88fb-4cdb-b804-0ca64b57ad07
+  table-id:
+  - Sample Database
+  - public
+  - orders
+  target:
+  - field
+  - base-type: type/Float
+    effective-type: type/Float
+  - - Sample Database
+    - public
+    - orders
+    - subtotal
+  type: table
+- dimension-id: cd9b2b08-2760-4799-b51b-deb5fc1e0fda
+  table-id:
+  - Sample Database
+  - public
+  - orders
+  target:
+  - field
+  - base-type: type/Float
+    effective-type: type/Float
+  - - Sample Database
+    - public
+    - orders
+    - tax
+  type: table
+- dimension-id: d3c2171a-df24-4b43-98a4-6bc66f760012
+  table-id:
+  - Sample Database
+  - public
+  - orders
+  target:
+  - field
+  - base-type: type/Float
+    effective-type: type/Float
+  - - Sample Database
+    - public
+    - orders
+    - total
+  type: table
+- dimension-id: 30288832-15af-4bd3-944e-388f88b1a952
+  table-id:
+  - Sample Database
+  - public
+  - orders
+  target:
+  - field
+  - base-type: type/Float
+    effective-type: type/Float
+  - - Sample Database
+    - public
+    - orders
+    - discount
+  type: table
+- dimension-id: 2041416a-72a0-49d9-bfff-e010fc6ba38b
+  table-id:
+  - Sample Database
+  - public
+  - orders
+  target:
+  - field
+  - base-type: type/DateTime
+    effective-type: type/DateTime
+  - - Sample Database
+    - public
+    - orders
+    - created_at
+  type: table
+- dimension-id: 7ed8a91c-f1f6-4c8d-844b-22322598c58c
+  table-id:
+  - Sample Database
+  - public
+  - orders
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Sample Database
+    - public
+    - orders
+    - quantity
+  type: table
+dimensions:
+- display-name: Order ID
+  effective-type: type/BigInteger
+  group:
+    display-name: Orders
+    id: 3cb5ca80-a5cd-3135-b9a2-cf19f2dd1e91
+    type: main
+  has-field-values: list
+  id: 6c2871de-3e12-4786-aa98-70ad274a77c2
+  name: id
+  semantic-type: type/PK
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - orders
+    - id
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Customer
+  effective-type: type/Integer
+  group:
+    display-name: Orders
+    id: 3cb5ca80-a5cd-3135-b9a2-cf19f2dd1e91
+    type: main
+  has-field-values: search
+  id: c6698479-5a66-4cd1-ac43-50c94c176db9
+  name: user_id
+  semantic-type: type/FK
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - orders
+    - user_id
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Product
+  effective-type: type/Integer
+  group:
+    display-name: Orders
+    id: 3cb5ca80-a5cd-3135-b9a2-cf19f2dd1e91
+    type: main
+  has-field-values: search
+  id: aa75fe58-2d4f-4e84-8345-e6938824f776
+  name: product_id
+  semantic-type: type/FK
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - orders
+    - product_id
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Subtotal
+  effective-type: type/Float
+  group:
+    display-name: Orders
+    id: 3cb5ca80-a5cd-3135-b9a2-cf19f2dd1e91
+    type: main
+  has-field-values: none
+  id: ef7ea28c-88fb-4cdb-b804-0ca64b57ad07
+  name: subtotal
+  semantic-type: type/Currency
+  sources:
+  - binning: true
+    field-id:
+    - Sample Database
+    - public
+    - orders
+    - subtotal
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Tax
+  effective-type: type/Float
+  group:
+    display-name: Orders
+    id: 3cb5ca80-a5cd-3135-b9a2-cf19f2dd1e91
+    type: main
+  has-field-values: none
+  id: cd9b2b08-2760-4799-b51b-deb5fc1e0fda
+  name: tax
+  semantic-type: type/Currency
+  sources:
+  - binning: true
+    field-id:
+    - Sample Database
+    - public
+    - orders
+    - tax
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Total
+  effective-type: type/Float
+  group:
+    display-name: Orders
+    id: 3cb5ca80-a5cd-3135-b9a2-cf19f2dd1e91
+    type: main
+  has-field-values: none
+  id: d3c2171a-df24-4b43-98a4-6bc66f760012
+  name: total
+  semantic-type: type/Currency
+  sources:
+  - binning: true
+    field-id:
+    - Sample Database
+    - public
+    - orders
+    - total
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Discount
+  effective-type: type/Float
+  group:
+    display-name: Orders
+    id: 3cb5ca80-a5cd-3135-b9a2-cf19f2dd1e91
+    type: main
+  has-field-values: none
+  id: 30288832-15af-4bd3-944e-388f88b1a952
+  name: discount
+  semantic-type: type/Currency
+  sources:
+  - binning: true
+    field-id:
+    - Sample Database
+    - public
+    - orders
+    - discount
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Created at
+  effective-type: type/DateTime
+  group:
+    display-name: Orders
+    id: 3cb5ca80-a5cd-3135-b9a2-cf19f2dd1e91
+    type: main
+  has-field-values: none
+  id: 2041416a-72a0-49d9-bfff-e010fc6ba38b
+  name: created_at
+  semantic-type: type/CreationTimestamp
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - orders
+    - created_at
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Quantity
+  effective-type: type/Integer
+  group:
+    display-name: Orders
+    id: 3cb5ca80-a5cd-3135-b9a2-cf19f2dd1e91
+    type: main
+  has-field-values: list
+  id: 7ed8a91c-f1f6-4c8d-844b-22322598c58c
+  name: quantity
+  semantic-type: type/Quantity
+  sources:
+  - binning: true
+    field-id:
+    - Sample Database
+    - public
+    - orders
+    - quantity
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
 type: metric

@@ -36,4 +36,1247 @@ serdes/meta:
 - id: 1t2FXOw-51UqMpzPTVC33
   label: flights_scheduled
   model: Card
+dimension_mappings:
+- dimension-id: 48ac770e-60a1-466f-a6ce-ade5ece71b9d
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/BigInteger
+    effective-type: type/BigInteger
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - flight_id
+  type: table
+- dimension-id: 9bad8a01-12af-47f9-beb5-b1c6a798fbfe
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Date
+    effective-type: type/Date
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - flight_date
+  type: table
+- dimension-id: 28ff7b28-cb5a-4760-9429-a0d418dec612
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/DateTime
+    effective-type: type/DateTime
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - scheduled_departure_local
+  type: table
+- dimension-id: 41b8dff8-0839-43c7-89f6-192b6e6149d9
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - scheduled_departure_hour
+  type: table
+- dimension-id: 99036ec1-6f03-47cf-a9dc-f75d2f5ca2d1
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - airline_code
+  type: table
+- dimension-id: 220379b9-e15a-4492-be3a-f10a07e2ef8f
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - flight_number
+  type: table
+- dimension-id: 45075da3-ca21-4bf7-a0b4-1c7145f05eff
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - tail_number
+  type: table
+- dimension-id: bd2acd00-a244-4d34-bf91-7924ff8161dc
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - origin_airport_code
+  type: table
+- dimension-id: 32dcf972-ce10-46b3-8003-d800cda9b18d
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - destination_airport_code
+  type: table
+- dimension-id: 5f0a4641-bf0b-4a82-b286-1156e252b287
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - route
+  type: table
+- dimension-id: 4036ec97-9535-453d-aafa-c80d3fd4e948
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - airport_code_source
+  type: table
+- dimension-id: 40315c32-69d6-46b2-a8b0-af812d7600ef
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - flight_status
+  type: table
+- dimension-id: bc553541-f2af-4edd-82b4-44b6a6ba1199
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Boolean
+    effective-type: type/Boolean
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - is_on_time
+  type: table
+- dimension-id: 08e60a91-63a6-41e8-8076-bd3f108c1678
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Boolean
+    effective-type: type/Boolean
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - is_late_15
+  type: table
+- dimension-id: 08e84234-03d6-4a34-9848-c9f31ccfeb13
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Boolean
+    effective-type: type/Boolean
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - is_cancelled
+  type: table
+- dimension-id: 2cc15b4f-e97a-41a3-91bd-33c0431e1298
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Boolean
+    effective-type: type/Boolean
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - is_diverted
+  type: table
+- dimension-id: 6f18af0d-c177-4551-ad30-16336efa14f8
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Boolean
+    effective-type: type/Boolean
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - is_completed
+  type: table
+- dimension-id: 5fb8514a-bfa4-4bf8-b2bd-87d22756b5fe
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - cancellation_cause
+  type: table
+- dimension-id: e8b5a6c4-b7b3-41cd-995f-b4fc1d6a8ead
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - departure_delay_min
+  type: table
+- dimension-id: 8241729a-05e2-4d22-89e6-5c34f3b1b41a
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - arrival_delay_min
+  type: table
+- dimension-id: 23539025-c0eb-472c-80f4-f447b91cc36e
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - airline_delay_min
+  type: table
+- dimension-id: 9a3d1448-13fd-4f9a-9365-48e4baf8fb16
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - late_aircraft_delay_min
+  type: table
+- dimension-id: 2a3f7de2-40c2-4468-885d-244ce4762298
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - air_system_delay_min
+  type: table
+- dimension-id: af91596d-21ad-48d3-a732-f0f5c93b4480
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - weather_delay_min
+  type: table
+- dimension-id: 26afc7e5-e05b-4ace-8f5f-e91bb8d1e79a
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - security_delay_min
+  type: table
+- dimension-id: 5421f5e0-f365-46a0-8ecf-05eaae9d13b2
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - taxi_out_min
+  type: table
+- dimension-id: 5b21622a-d9b2-453b-bcce-bfddd50785a9
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - taxi_in_min
+  type: table
+- dimension-id: 9ee01452-e161-46a8-bc0b-354ea8e77219
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - air_time_min
+  type: table
+- dimension-id: 393c1478-1087-4085-b38f-6eaec328ece1
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - scheduled_time_min
+  type: table
+- dimension-id: 70052d27-20df-481f-92e8-aa00099ec339
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - elapsed_time_min
+  type: table
+- dimension-id: 4cfc2280-f3ec-4c26-8114-c1d253e4776e
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Integer
+    effective-type: type/Integer
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - distance_miles
+  type: table
+- dimension-id: 054d2be3-00d9-4335-b10e-9fb84071ddd0
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - origin_airport_raw
+  type: table
+- dimension-id: b1e81fa3-983f-4442-883d-28e3b3ab711f
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - destination_airport_raw
+  type: table
+- dimension-id: b147fdc2-ab5f-4b0b-93ad-72b5793307fe
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - scheduled_departure_hhmm
+  type: table
+- dimension-id: 4a4f2010-5703-4065-b2cb-441f86247faa
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - departure_time_hhmm
+  type: table
+- dimension-id: 2a7b1d23-f0ca-4965-a731-7439705fc5b8
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - scheduled_arrival_hhmm
+  type: table
+- dimension-id: 08717e9f-5d36-4775-aec0-0fecfc110bce
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - arrival_time_hhmm
+  type: table
+- dimension-id: 2e150f81-af6f-4a0a-b018-d6629b872313
+  table-id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_fct_flight
+  target:
+  - field
+  - base-type: type/Boolean
+    effective-type: type/Boolean
+  - - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - is_complete_period
+  type: table
+dimensions:
+- display-name: Flight ID
+  effective-type: type/BigInteger
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 48ac770e-60a1-466f-a6ce-ade5ece71b9d
+  name: flight_id
+  semantic-type: type/PK
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - flight_id
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Flight date
+  effective-type: type/Date
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: none
+  id: 9bad8a01-12af-47f9-beb5-b1c6a798fbfe
+  name: flight_date
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - flight_date
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Scheduled departure (local)
+  effective-type: type/DateTime
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: none
+  id: 28ff7b28-cb5a-4760-9429-a0d418dec612
+  name: scheduled_departure_local
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - scheduled_departure_local
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Scheduled departure hour
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 41b8dff8-0839-43c7-89f6-192b6e6149d9
+  name: scheduled_departure_hour
+  semantic-type: type/Category
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - scheduled_departure_hour
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Airline
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 99036ec1-6f03-47cf-a9dc-f75d2f5ca2d1
+  name: airline_code
+  semantic-type: type/FK
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - airline_code
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Flight number
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: search
+  id: 220379b9-e15a-4492-be3a-f10a07e2ef8f
+  name: flight_number
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - flight_number
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Tail number
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: search
+  id: 45075da3-ca21-4bf7-a0b4-1c7145f05eff
+  name: tail_number
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - tail_number
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Origin airport
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: bd2acd00-a244-4d34-bf91-7924ff8161dc
+  name: origin_airport_code
+  semantic-type: type/FK
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - origin_airport_code
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Destination airport
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 32dcf972-ce10-46b3-8003-d800cda9b18d
+  name: destination_airport_code
+  semantic-type: type/FK
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - destination_airport_code
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Route
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: search
+  id: 5f0a4641-bf0b-4a82-b286-1156e252b287
+  name: route
+  semantic-type: type/Category
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - route
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Airport code source
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 4036ec97-9535-453d-aafa-c80d3fd4e948
+  name: airport_code_source
+  semantic-type: type/Source
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - airport_code_source
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Flight status
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 40315c32-69d6-46b2-a8b0-af812d7600ef
+  name: flight_status
+  semantic-type: type/Category
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - flight_status
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Is on time
+  effective-type: type/Boolean
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: bc553541-f2af-4edd-82b4-44b6a6ba1199
+  name: is_on_time
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - is_on_time
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Is late (15+ min)
+  effective-type: type/Boolean
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 08e60a91-63a6-41e8-8076-bd3f108c1678
+  name: is_late_15
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - is_late_15
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Is cancelled
+  effective-type: type/Boolean
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 08e84234-03d6-4a34-9848-c9f31ccfeb13
+  name: is_cancelled
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - is_cancelled
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Is diverted
+  effective-type: type/Boolean
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 2cc15b4f-e97a-41a3-91bd-33c0431e1298
+  name: is_diverted
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - is_diverted
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Is completed
+  effective-type: type/Boolean
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 6f18af0d-c177-4551-ad30-16336efa14f8
+  name: is_completed
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - is_completed
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Cancellation cause
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 5fb8514a-bfa4-4bf8-b2bd-87d22756b5fe
+  name: cancellation_cause
+  semantic-type: type/Category
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - cancellation_cause
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Departure delay (min)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: e8b5a6c4-b7b3-41cd-995f-b4fc1d6a8ead
+  name: departure_delay_min
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - departure_delay_min
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Arrival delay (min)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 8241729a-05e2-4d22-89e6-5c34f3b1b41a
+  name: arrival_delay_min
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - arrival_delay_min
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Airline-caused delay (min)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 23539025-c0eb-472c-80f4-f447b91cc36e
+  name: airline_delay_min
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - airline_delay_min
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Late-aircraft delay (min)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 9a3d1448-13fd-4f9a-9365-48e4baf8fb16
+  name: late_aircraft_delay_min
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - late_aircraft_delay_min
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Air-system delay (min)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 2a3f7de2-40c2-4468-885d-244ce4762298
+  name: air_system_delay_min
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - air_system_delay_min
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Weather delay (min)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: af91596d-21ad-48d3-a732-f0f5c93b4480
+  name: weather_delay_min
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - weather_delay_min
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Security delay (min)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 26afc7e5-e05b-4ace-8f5f-e91bb8d1e79a
+  name: security_delay_min
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - security_delay_min
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Taxi out (min)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 5421f5e0-f365-46a0-8ecf-05eaae9d13b2
+  name: taxi_out_min
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - taxi_out_min
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Taxi in (min)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 5b21622a-d9b2-453b-bcce-bfddd50785a9
+  name: taxi_in_min
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - taxi_in_min
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Air time (min)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 9ee01452-e161-46a8-bc0b-354ea8e77219
+  name: air_time_min
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - air_time_min
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Scheduled gate-to-gate (min)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 393c1478-1087-4085-b38f-6eaec328ece1
+  name: scheduled_time_min
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - scheduled_time_min
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Actual gate-to-gate (min)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 70052d27-20df-481f-92e8-aa00099ec339
+  name: elapsed_time_min
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - elapsed_time_min
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Distance (miles)
+  effective-type: type/Integer
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 4cfc2280-f3ec-4c26-8114-c1d253e4776e
+  name: distance_miles
+  sources:
+  - binning: true
+    field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - distance_miles
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Origin airport (as reported)
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 054d2be3-00d9-4335-b10e-9fb84071ddd0
+  name: origin_airport_raw
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - origin_airport_raw
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Destination airport (as reported)
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: b1e81fa3-983f-4442-883d-28e3b3ab711f
+  name: destination_airport_raw
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - destination_airport_raw
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Scheduled departure (hhmm)
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: b147fdc2-ab5f-4b0b-93ad-72b5793307fe
+  name: scheduled_departure_hhmm
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - scheduled_departure_hhmm
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Actual departure (hhmm)
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 4a4f2010-5703-4065-b2cb-441f86247faa
+  name: departure_time_hhmm
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - departure_time_hhmm
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Scheduled arrival (hhmm)
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 2a7b1d23-f0ca-4965-a731-7439705fc5b8
+  name: scheduled_arrival_hhmm
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - scheduled_arrival_hhmm
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Actual arrival (hhmm)
+  effective-type: type/Text
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 08717e9f-5d36-4775-aec0-0fecfc110bce
+  name: arrival_time_hhmm
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - arrival_time_hhmm
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Is complete period
+  effective-type: type/Boolean
+  group:
+    display-name: Flights
+    id: 5ecbb08b-c9a1-3c86-9f5a-0a575d2db4a7
+    type: main
+  has-field-values: list
+  id: 2e150f81-af6f-4a0a-b018-d6629b872313
+  name: is_complete_period
+  sources:
+  - field-id:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    - is_complete_period
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
 type: metric

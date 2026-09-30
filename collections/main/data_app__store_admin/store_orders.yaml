@@ -1,10 +1,10 @@
 name: Store orders
 description: 'Orders table as a model, carrying the Create order action for the Store Admin app. Owner: ignacio@metabase.com.'
-entity_id: X71CONg-dlgsDnQq1MHUd
-created_at: '2026-09-30T17:19:06.424182Z'
-creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+entity_id: JMsjdo1cvicrouzTtVAyu
+created_at: '2026-09-30T17:29:35.664369Z'
+creator_id: api-key-user-9f95b91a-1343-4c1b-b7d1-13e7675650d3@api-key.invalid
 display: table
-collection_id: hmnfITTYwUMMqZmVdPgVn
+collection_id: T7Yhwr5OIeX_3dNJppku9
 parameters: []
 parameter_mappings: []
 dataset_query:
@@ -84,7 +84,7 @@ visualization_settings:
   column_settings: null
 card_schema: 24
 serdes/meta:
-- id: X71CONg-dlgsDnQq1MHUd
+- id: JMsjdo1cvicrouzTtVAyu
   label: store_orders
   model: Card
 type: model
