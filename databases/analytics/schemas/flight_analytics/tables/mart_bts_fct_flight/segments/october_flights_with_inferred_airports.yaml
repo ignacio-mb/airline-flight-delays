@@ -1,0 +1,28 @@
+created_at: '2026-09-30T15:46:50.19217Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Analytics
+  stages:
+  - filters:
+    - - =
+      - {}
+      - - field
+        - {}
+        - - Analytics
+          - flight_analytics
+          - mart_bts_fct_flight
+          - airport_code_source
+      - inferred_oct
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'October 2015 flights whose airports were inferred from September/November legs because the source used 5-digit BTS ids (485,068 flights). For auditing D3; 1,097 more October flights keep an unknown airport and are not in this segment. Owner: ignacio@metabase.com.'
+entity_id: KxQC_jgEDHnsanACSY0Ci
+name: October flights with inferred airports
+serdes/meta:
+- id: KxQC_jgEDHnsanACSY0Ci
+  label: october_flights_with_inferred_airports
+  model: Segment

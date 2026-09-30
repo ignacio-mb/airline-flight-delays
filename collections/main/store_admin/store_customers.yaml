@@ -1,0 +1,87 @@
+name: Store customers
+description: 'People table as a model, carrying the Update customer action for the Store Admin app. Password is sensitive and not exposed. Owner: ignacio@metabase.com.'
+entity_id: LXrXxI1T-K0dX_4U-heP2
+created_at: '2026-09-30T17:19:06.762119Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+display: table
+collection_id: hmnfITTYwUMMqZmVdPgVn
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Sample Database
+  stages:
+  - source-table:
+    - Sample Database
+    - public
+    - people
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+result_metadata:
+- description: A unique identifier given to each user.
+  display_name: ID
+  name: id
+  semantic_type: type/PK
+  visibility_type: normal
+- description: Street address.
+  display_name: Address
+  name: address
+  semantic_type: null
+  visibility_type: normal
+- description: Customer email; unique across people.
+  display_name: Email
+  name: email
+  semantic_type: type/Email
+  visibility_type: normal
+- description: Customer full name.
+  display_name: Name
+  name: name
+  semantic_type: type/Name
+  visibility_type: normal
+- description: The city of the account’s billing address
+  display_name: City
+  name: city
+  semantic_type: type/City
+  visibility_type: normal
+- description: This is the longitude of the user on sign-up. It might be updated in the future to the last seen location.
+  display_name: Longitude
+  name: longitude
+  semantic_type: type/Longitude
+  visibility_type: normal
+- description: Two-letter US state; sets the tax rate on new orders.
+  display_name: State
+  name: state
+  semantic_type: type/State
+  visibility_type: normal
+- description: 'How the customer found the store: Affiliate, Facebook, Google, Organic, Twitter.'
+  display_name: Source
+  name: source
+  semantic_type: type/Source
+  visibility_type: normal
+- description: The date of birth of the user
+  display_name: Birth date
+  name: birth_date
+  semantic_type: null
+  visibility_type: normal
+- description: The postal code of the account’s billing address
+  display_name: Zip
+  name: zip
+  semantic_type: type/ZipCode
+  visibility_type: normal
+- description: This is the latitude of the user on sign-up. It might be updated in the future to the last seen location.
+  display_name: Latitude
+  name: latitude
+  semantic_type: type/Latitude
+  visibility_type: normal
+- description: When the customer signed up; the date basis for New customers.
+  display_name: Created at
+  name: created_at
+  semantic_type: type/CreationTimestamp
+  visibility_type: normal
+visualization_settings:
+  column_settings: null
+card_schema: 24
+serdes/meta:
+- id: LXrXxI1T-K0dX_4U-heP2
+  label: store_customers
+  model: Card
+type: model

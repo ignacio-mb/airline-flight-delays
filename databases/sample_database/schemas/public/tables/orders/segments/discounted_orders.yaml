@@ -1,0 +1,28 @@
+created_at: '2026-09-30T17:09:02.309956Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Sample Database
+  stages:
+  - filters:
+    - - '>'
+      - {}
+      - - field
+        - {}
+        - - Sample Database
+          - public
+          - orders
+          - discount
+      - 0
+    source-table:
+    - Sample Database
+    - public
+    - orders
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Orders with a discount above zero (1,915 of 18,760 historical). Owner: ignacio@metabase.com.'
+entity_id: UnoY0HsiDlf5a9Suv0fQd
+name: Discounted orders
+serdes/meta:
+- id: UnoY0HsiDlf5a9Suv0fQd
+  label: discounted_orders
+  model: Segment

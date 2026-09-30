@@ -1,0 +1,437 @@
+name: New customers
+description: 'Self-consistent only, no external reference. People who signed up in the period, by People created_at (2,500 all time). Monthly by created_at; April 2020 is partial (data ends 2020-04-19); orders added through the app are dated when entered. Owner: ignacio@metabase.com.'
+entity_id: CbY8YJDpdLfL2Ux5g7xS1
+created_at: '2026-09-30T17:09:25.268774Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+display: line
+collection_id: librarylibrarymetrics
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - measure
+      - display-name: New customers
+        name: customers
+      - 5H-7znzQ_KHfCMo0Y6CIb
+    breakout:
+    - - field
+      - temporal-unit: month
+      - - Sample Database
+        - public
+        - people
+        - created_at
+    source-table:
+    - Sample Database
+    - public
+    - people
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings:
+    '["name","customers"]': {}
+card_schema: 24
+serdes/meta:
+- id: CbY8YJDpdLfL2Ux5g7xS1
+  label: new_customers
+  model: Card
+dimension_mappings:
+- dimension-id: ab6bda4e-a82c-4551-b215-544ba24b35db
+  table-id:
+  - Sample Database
+  - public
+  - people
+  target:
+  - field
+  - base-type: type/BigInteger
+    effective-type: type/BigInteger
+  - - Sample Database
+    - public
+    - people
+    - id
+  type: table
+- dimension-id: fd94f02a-f407-4a5d-82eb-ca16c50e6ac9
+  table-id:
+  - Sample Database
+  - public
+  - people
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Sample Database
+    - public
+    - people
+    - address
+  type: table
+- dimension-id: d521de83-fb5c-4fe2-a841-39678a4fc428
+  table-id:
+  - Sample Database
+  - public
+  - people
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Sample Database
+    - public
+    - people
+    - email
+  type: table
+- dimension-id: 21a3a7c9-c936-4b86-b285-c4a2b500e8e0
+  table-id:
+  - Sample Database
+  - public
+  - people
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Sample Database
+    - public
+    - people
+    - name
+  type: table
+- dimension-id: 623b5c43-6ad8-4f1c-b80f-517f41026c2c
+  table-id:
+  - Sample Database
+  - public
+  - people
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Sample Database
+    - public
+    - people
+    - city
+  type: table
+- dimension-id: c3b9981e-209f-49a9-b311-062f158c4431
+  table-id:
+  - Sample Database
+  - public
+  - people
+  target:
+  - field
+  - base-type: type/Float
+    effective-type: type/Float
+  - - Sample Database
+    - public
+    - people
+    - longitude
+  type: table
+- dimension-id: c455ea58-00dc-4e79-8f66-84fd290d03c1
+  table-id:
+  - Sample Database
+  - public
+  - people
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Sample Database
+    - public
+    - people
+    - state
+  type: table
+- dimension-id: 6a52e43f-c468-467a-b862-2f63d897c256
+  table-id:
+  - Sample Database
+  - public
+  - people
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Sample Database
+    - public
+    - people
+    - source
+  type: table
+- dimension-id: f824f2dc-a946-4651-a9b6-7fe806e641d0
+  table-id:
+  - Sample Database
+  - public
+  - people
+  target:
+  - field
+  - base-type: type/Date
+    effective-type: type/Date
+  - - Sample Database
+    - public
+    - people
+    - birth_date
+  type: table
+- dimension-id: 0259c174-0f3b-4de9-89d9-58e898baa7c8
+  table-id:
+  - Sample Database
+  - public
+  - people
+  target:
+  - field
+  - base-type: type/Text
+    effective-type: type/Text
+  - - Sample Database
+    - public
+    - people
+    - zip
+  type: table
+- dimension-id: 43ec6a46-a2c0-4e2b-9d2a-39fedf0cb365
+  table-id:
+  - Sample Database
+  - public
+  - people
+  target:
+  - field
+  - base-type: type/Float
+    effective-type: type/Float
+  - - Sample Database
+    - public
+    - people
+    - latitude
+  type: table
+- dimension-id: de197c38-a6d5-409d-94ee-ac05564ff341
+  table-id:
+  - Sample Database
+  - public
+  - people
+  target:
+  - field
+  - base-type: type/DateTime
+    effective-type: type/DateTime
+  - - Sample Database
+    - public
+    - people
+    - created_at
+  type: table
+dimensions:
+- display-name: ID
+  effective-type: type/BigInteger
+  group:
+    display-name: People
+    id: ce71c141-d154-3730-a420-a6ca224ab29c
+    type: main
+  has-field-values: list
+  id: ab6bda4e-a82c-4551-b215-544ba24b35db
+  name: id
+  semantic-type: type/PK
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - people
+    - id
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Address
+  effective-type: type/Text
+  group:
+    display-name: People
+    id: ce71c141-d154-3730-a420-a6ca224ab29c
+    type: main
+  has-field-values: list
+  id: fd94f02a-f407-4a5d-82eb-ca16c50e6ac9
+  name: address
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - people
+    - address
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Email
+  effective-type: type/Text
+  group:
+    display-name: People
+    id: ce71c141-d154-3730-a420-a6ca224ab29c
+    type: main
+  has-field-values: search
+  id: d521de83-fb5c-4fe2-a841-39678a4fc428
+  name: email
+  semantic-type: type/Email
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - people
+    - email
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Name
+  effective-type: type/Text
+  group:
+    display-name: People
+    id: ce71c141-d154-3730-a420-a6ca224ab29c
+    type: main
+  has-field-values: search
+  id: 21a3a7c9-c936-4b86-b285-c4a2b500e8e0
+  name: name
+  semantic-type: type/Name
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - people
+    - name
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: City
+  effective-type: type/Text
+  group:
+    display-name: People
+    id: ce71c141-d154-3730-a420-a6ca224ab29c
+    type: main
+  has-field-values: search
+  id: 623b5c43-6ad8-4f1c-b80f-517f41026c2c
+  name: city
+  semantic-type: type/City
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - people
+    - city
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Longitude
+  effective-type: type/Float
+  group:
+    display-name: People
+    id: ce71c141-d154-3730-a420-a6ca224ab29c
+    type: main
+  has-field-values: none
+  id: c3b9981e-209f-49a9-b311-062f158c4431
+  name: longitude
+  semantic-type: type/Longitude
+  sources:
+  - binning: true
+    field-id:
+    - Sample Database
+    - public
+    - people
+    - longitude
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: State
+  effective-type: type/Text
+  group:
+    display-name: People
+    id: ce71c141-d154-3730-a420-a6ca224ab29c
+    type: main
+  has-field-values: list
+  id: c455ea58-00dc-4e79-8f66-84fd290d03c1
+  name: state
+  semantic-type: type/State
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - people
+    - state
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Source
+  effective-type: type/Text
+  group:
+    display-name: People
+    id: ce71c141-d154-3730-a420-a6ca224ab29c
+    type: main
+  has-field-values: list
+  id: 6a52e43f-c468-467a-b862-2f63d897c256
+  name: source
+  semantic-type: type/Category
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - people
+    - source
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Birth date
+  effective-type: type/Date
+  group:
+    display-name: People
+    id: ce71c141-d154-3730-a420-a6ca224ab29c
+    type: main
+  has-field-values: none
+  id: f824f2dc-a946-4651-a9b6-7fe806e641d0
+  name: birth_date
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - people
+    - birth_date
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Zip
+  effective-type: type/Text
+  group:
+    display-name: People
+    id: ce71c141-d154-3730-a420-a6ca224ab29c
+    type: main
+  has-field-values: list
+  id: 0259c174-0f3b-4de9-89d9-58e898baa7c8
+  name: zip
+  semantic-type: type/ZipCode
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - people
+    - zip
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Latitude
+  effective-type: type/Float
+  group:
+    display-name: People
+    id: ce71c141-d154-3730-a420-a6ca224ab29c
+    type: main
+  has-field-values: none
+  id: 43ec6a46-a2c0-4e2b-9d2a-39fedf0cb365
+  name: latitude
+  semantic-type: type/Latitude
+  sources:
+  - binning: true
+    field-id:
+    - Sample Database
+    - public
+    - people
+    - latitude
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+- display-name: Created at
+  effective-type: type/DateTime
+  group:
+    display-name: People
+    id: ce71c141-d154-3730-a420-a6ca224ab29c
+    type: main
+  has-field-values: none
+  id: de197c38-a6d5-409d-94ee-ac05564ff341
+  name: created_at
+  semantic-type: type/CreationTimestamp
+  sources:
+  - field-id:
+    - Sample Database
+    - public
+    - people
+    - created_at
+    type: field
+  status: status/active
+  lib/source: source/table-defaults
+type: metric

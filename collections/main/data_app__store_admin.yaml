@@ -1,0 +1,9 @@
+name: 'Data App: store-admin'
+entity_id: T7Yhwr5OIeX_3dNJppku9
+slug: data_app__store_admin
+created_at: '2026-09-30T17:29:34.129194Z'
+serdes/meta:
+- id: T7Yhwr5OIeX_3dNJppku9
+  label: data_app__store_admin
+  model: Collection
+is_remote_synced: true

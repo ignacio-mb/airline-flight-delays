@@ -1,0 +1,7 @@
+version: 1
+
+name: Store Admin
+
+description: Add orders for Sample Database customers and edit their profiles.
+
+path: ./dist/index.js

@@ -1,0 +1,127 @@
+caveats: Carrier groups are this analysis's classification (D6), not DOT's. US Airways flew January-June only, then reported jointly with American.
+caveats_set: true
+collection_id: librarylibrarydatadat
+created_at: '2026-09-30T15:45:25.43553Z'
+description: One row per airline reporting on-time data to US DOT in 2015 (14 airlines), with its carrier group and the months it flew.
+description_set: true
+display_name: Airlines
+entity_type: entity/CompanyTable
+fields:
+- created_at: '2026-09-30T15:45:12.708772Z'
+  description: Two-character IATA airline code, as on Flights.
+  description_set: true
+  display_name: Airline code
+  semantic_type: type/PK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airline
+    model: Table
+  - id: airline_code
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:12.930941Z'
+  description: Airline name.
+  description_set: true
+  display_name: Airline
+  has_field_values: list
+  semantic_type: type/Name
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airline
+    model: Table
+  - id: airline_name
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:13.15717Z'
+  description: Legacy (AA, DL, UA, US, AS, HA), Low-cost (WN, B6, F9, NK, VX), or Regional (EV, MQ, OO). Classification decided for this analysis (D6), not reported by DOT.
+  description_set: true
+  display_name: Carrier group
+  has_field_values: list
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airline
+    model: Table
+  - id: carrier_group
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:13.381816Z'
+  description: First month of 2015 with flights for this airline.
+  description_set: true
+  display_name: First flight month
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airline
+    model: Table
+  - id: first_flight_month
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:13.606618Z'
+  description: Last month of 2015 with flights for this airline. June for US Airways.
+  description_set: true
+  display_name: Last flight month
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airline
+    model: Table
+  - id: last_flight_month
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:13.842349Z'
+  description: 'The airline this one merged into during 2015: US Airways reported jointly with American from July.'
+  description_set: true
+  display_name: Merged into
+  fk_target_field_id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_dim_airline
+  - airline_code
+  fk_target_field_id_set: true
+  has_field_values: list
+  semantic_type: type/FK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airline
+    model: Table
+  - id: merged_into_airline_code
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+is_published: true
+owner_email: ignacio@metabase.com
+serdes/meta:
+- id: Analytics
+  model: Database
+- id: flight_analytics
+  model: Schema
+- id: mart_bts_dim_airline
+  model: Table
+- id: '1'
+  model: TableUserSettings

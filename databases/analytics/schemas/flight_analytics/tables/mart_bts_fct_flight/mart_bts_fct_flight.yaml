@@ -1,0 +1,640 @@
+caveats: 'On time means arriving less than 15 minutes after schedule; cancelled and diverted flights are never on time. Dates and hours are local to the departure airport. October airports are inferred from September/November flights on the same leg (1,097 October flights keep an unknown airport). Delay causes exist only for flights 15+ minutes late. US Airways (US) flew January–June only, before merging into American. Closed 2015 extract: every month is complete.'
+caveats_set: true
+collection_id: librarylibrarydatadat
+created_at: '2026-09-30T15:37:26.338787Z'
+description: One row per scheduled US domestic flight in 2015 (5,819,079 flights across 14 airlines), including the 89,884 cancelled and 15,187 diverted. Each flight has its local scheduled date and hour, IATA airports, a status (on time, late, cancelled, diverted), and delays and delay causes in minutes.
+description_set: true
+display_name: Flights
+entity_type: entity/EventTable
+fields:
+- created_at: '2026-09-30T15:45:08.793022Z'
+  description: 'Minutes of the arrival delay caused by the National Aviation System: non-extreme weather, airport operations, traffic, air traffic control. Only on flights 15+ min late.'
+  description_set: true
+  display_name: Air-system delay (min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: air_system_delay_min
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:10.01391Z'
+  description: Minutes from wheels off to wheels on. Empty for cancelled and diverted flights.
+  description_set: true
+  display_name: Air time (min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: air_time_min
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:04.632066Z'
+  description: Operating airline's IATA code; links to Airlines for name and carrier group.
+  description_set: true
+  display_name: Airline
+  fk_target_field_id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_dim_airline
+  - airline_code
+  fk_target_field_id_set: true
+  has_field_values: list
+  semantic_type: type/FK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: airline_code
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:08.304157Z'
+  description: 'Minutes of the arrival delay caused by the airline: maintenance, crew, cleaning, baggage, fueling. Only on flights 15+ min late; the five causes sum to the arrival delay.'
+  description_set: true
+  display_name: Airline-caused delay (min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: airline_delay_min
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:06.111724Z'
+  description: iata (as reported), inferred_oct (October flight, codes inferred from the crosswalk), or unmapped (an October airport the crosswalk could not identify).
+  description_set: true
+  display_name: Airport code source
+  has_field_values: list
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: airport_code_source
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:08.060052Z'
+  description: Minutes from scheduled to actual gate arrival; negative when early. Empty for cancelled and diverted flights.
+  description_set: true
+  display_name: Arrival delay (min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: arrival_delay_min
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:12.217116Z'
+  description: Actual gate arrival as reported, local hhmm at the arrival airport; 2400 is midnight.
+  description_set: true
+  display_name: Actual arrival (hhmm)
+  visibility_type: details-only
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: arrival_time_hhmm
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:07.572154Z'
+  description: 'Why a cancelled flight was cancelled: Weather, Airline/Carrier, National Air System, or Security. Empty for flights that were not cancelled.'
+  description_set: true
+  display_name: Cancellation cause
+  has_field_values: list
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: cancellation_cause
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:07.81515Z'
+  description: Minutes from scheduled to actual gate departure; negative when early. Empty when the flight never left the gate.
+  description_set: true
+  display_name: Departure delay (min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: departure_delay_min
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:11.722303Z'
+  description: Actual gate departure as reported, local hhmm; 2400 is midnight at the end of the day.
+  description_set: true
+  display_name: Actual departure (hhmm)
+  visibility_type: details-only
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: departure_time_hhmm
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:05.617211Z'
+  description: Scheduled arrival airport's IATA code; links to Airports. October codes are inferred; empty for 548 October flights the crosswalk could not identify.
+  description_set: true
+  display_name: Destination airport
+  fk_target_field_id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_dim_airport
+  - airport_code
+  fk_target_field_id_set: true
+  has_field_values: list
+  semantic_type: type/FK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: destination_airport_code
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:11.228475Z'
+  description: 'Destination as the BTS file reported it: IATA code, or a 5-digit BTS id in October.'
+  description_set: true
+  display_name: Destination airport (as reported)
+  visibility_type: details-only
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: destination_airport_raw
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:10.735725Z'
+  description: Miles between the two airports.
+  description_set: true
+  display_name: Distance (miles)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: distance_miles
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:10.494668Z'
+  description: Actual minutes from gate to gate. Empty for cancelled and diverted flights.
+  description_set: true
+  display_name: Actual gate-to-gate (min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: elapsed_time_min
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:37:26.812157Z'
+  description: Local date of the scheduled departure (the date basis for every flight metric).
+  description_set: true
+  display_name: Flight date
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: flight_date
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:37:26.574555Z'
+  description: Position of the flight in the BTS source file; the data has no id of its own.
+  description_set: true
+  display_name: Flight ID
+  semantic_type: type/PK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: flight_id
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:04.879171Z'
+  description: 'The airline''s flight number. Not unique: one number often flies several legs a day.'
+  description_set: true
+  display_name: Flight number
+  has_field_values: search
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: flight_number
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:37:27.265677Z'
+  description: on_time (arrived < 15 min late), late (15+ min late), cancelled, or diverted.
+  description_set: true
+  display_name: Flight status
+  has_field_values: list
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: flight_status
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:06.834688Z'
+  description: True when the flight was cancelled.
+  description_set: true
+  display_name: Is cancelled
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: is_cancelled
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:12.457569Z'
+  description: True when the flight's month is fully loaded. Every 2015 month is complete (closed extract).
+  description_set: true
+  display_name: Is complete period
+  visibility_type: details-only
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: is_complete_period
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:07.328907Z'
+  description: True when the flight was neither cancelled nor diverted. Only completed flights have an arrival delay.
+  description_set: true
+  display_name: Is completed
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: is_completed
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:07.082469Z'
+  description: True when the flight landed somewhere other than its destination.
+  description_set: true
+  display_name: Is diverted
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: is_diverted
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:06.594853Z'
+  description: True when the flight completed and arrived 15 or more minutes after schedule. These are the flights with delay causes.
+  description_set: true
+  display_name: Is late (15+ min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: is_late_15
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:37:27.038689Z'
+  description: True when the flight completed and arrived less than 15 minutes after its scheduled arrival (DOT standard). False for late, cancelled, and diverted flights.
+  description_set: true
+  display_name: Is on time
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: is_on_time
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:08.546696Z'
+  description: Minutes of the arrival delay caused by the aircraft arriving late from its previous flight. Only on flights 15+ min late.
+  description_set: true
+  display_name: Late-aircraft delay (min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: late_aircraft_delay_min
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:05.365282Z'
+  description: Departure airport's IATA code; links to Airports. October codes are inferred from September/November legs; empty for 549 October flights the crosswalk could not identify.
+  description_set: true
+  display_name: Origin airport
+  fk_target_field_id:
+  - Analytics
+  - flight_analytics
+  - mart_bts_dim_airport
+  - airport_code
+  fk_target_field_id_set: true
+  has_field_values: list
+  semantic_type: type/FK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: origin_airport_code
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:10.976082Z'
+  description: 'Origin as the BTS file reported it: IATA code, or a 5-digit BTS id in October.'
+  description_set: true
+  display_name: Origin airport (as reported)
+  visibility_type: details-only
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: origin_airport_raw
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:05.859667Z'
+  description: Origin-destination pair, e.g. ORD-LGA. Directional. Empty when either airport is unknown.
+  description_set: true
+  display_name: Route
+  has_field_values: search
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: route
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:11.972464Z'
+  description: Scheduled arrival as reported, local hhmm at the arrival airport.
+  description_set: true
+  display_name: Scheduled arrival (hhmm)
+  visibility_type: details-only
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: scheduled_arrival_hhmm
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:11.47591Z'
+  description: Scheduled departure as reported, local hhmm.
+  description_set: true
+  display_name: Scheduled departure (hhmm)
+  visibility_type: details-only
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: scheduled_departure_hhmm
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:04.380541Z'
+  description: Hour of the scheduled departure, 0-23, local time at the departure airport.
+  description_set: true
+  display_name: Scheduled departure hour
+  has_field_values: list
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: scheduled_departure_hour
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:04.133379Z'
+  description: Scheduled gate departure, local time at the departure airport.
+  description_set: true
+  display_name: Scheduled departure (local)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: scheduled_departure_local
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:10.251833Z'
+  description: Scheduled minutes from gate to gate.
+  description_set: true
+  display_name: Scheduled gate-to-gate (min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: scheduled_time_min
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:09.277132Z'
+  description: 'Minutes of the arrival delay caused by security: evacuations, re-boarding, screening lines. Only on flights 15+ min late.'
+  description_set: true
+  display_name: Security delay (min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: security_delay_min
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:05.122238Z'
+  description: Aircraft registration. Empty for 14,721 cancelled flights.
+  description_set: true
+  display_name: Tail number
+  has_field_values: search
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: tail_number
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:09.773827Z'
+  description: Minutes from wheels on to arriving at the gate.
+  description_set: true
+  display_name: Taxi in (min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: taxi_in_min
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:09.518347Z'
+  description: Minutes from leaving the gate to wheels off.
+  description_set: true
+  display_name: Taxi out (min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: taxi_out_min
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:09.036741Z'
+  description: Minutes of the arrival delay caused by extreme weather. Only on flights 15+ min late.
+  description_set: true
+  display_name: Weather delay (min)
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_fct_flight
+    model: Table
+  - id: weather_delay_min
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+is_published: true
+owner_email: ignacio@metabase.com
+serdes/meta:
+- id: Analytics
+  model: Database
+- id: flight_analytics
+  model: Schema
+- id: mart_bts_fct_flight
+  model: Table
+- id: '1'
+  model: TableUserSettings

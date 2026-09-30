@@ -1,0 +1,36 @@
+name: SourceValues
+entity_id: laa1dtSg-BACggxFvbVy3
+created_at: '2026-09-30T17:29:34.858145Z'
+creator_id: api-key-user-9f95b91a-1343-4c1b-b7d1-13e7675650d3@api-key.invalid
+display: table
+collection_id: T7Yhwr5OIeX_3dNJppku9
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - count
+      - {}
+    breakout:
+    - - field
+      - base-type: type/Text
+        effective-type: type/Text
+      - - Sample Database
+        - public
+        - people
+        - source
+    source-table:
+    - Sample Database
+    - public
+    - people
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings: null
+card_schema: 24
+serdes/meta:
+- id: laa1dtSg-BACggxFvbVy3
+  label: sourcevalues
+  model: Card
+type: question

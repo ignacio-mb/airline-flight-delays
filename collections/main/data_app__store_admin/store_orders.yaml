@@ -1,0 +1,90 @@
+name: Store orders
+description: 'Orders table as a model, carrying the Create order action for the Store Admin app. Owner: ignacio@metabase.com.'
+entity_id: JMsjdo1cvicrouzTtVAyu
+created_at: '2026-09-30T17:29:35.664369Z'
+creator_id: api-key-user-9f95b91a-1343-4c1b-b7d1-13e7675650d3@api-key.invalid
+display: table
+collection_id: T7Yhwr5OIeX_3dNJppku9
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Sample Database
+  stages:
+  - source-table:
+    - Sample Database
+    - public
+    - orders
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+result_metadata:
+- description: Order identifier. New orders from the app take the next number (the table has no id generator).
+  display_name: Order ID
+  name: id
+  semantic_type: type/PK
+  visibility_type: normal
+- description: The customer who placed the order; links to People.
+  display_name: Customer
+  fk_target_field_id:
+  - Sample Database
+  - public
+  - people
+  - id
+  name: user_id
+  semantic_type: type/FK
+  visibility_type: normal
+- description: The product ordered; links to Products.
+  display_name: Product
+  fk_target_field_id:
+  - Sample Database
+  - public
+  - products
+  - id
+  name: product_id
+  semantic_type: type/FK
+  visibility_type: normal
+- description: Order value before tax and discount, USD.
+  display_name: Subtotal
+  name: subtotal
+  semantic_type: type/Currency
+  settings:
+    currency: USD
+  visibility_type: normal
+- description: Sales tax, USD, at the customer's state rate.
+  display_name: Tax
+  name: tax
+  semantic_type: type/Currency
+  settings:
+    currency: USD
+  visibility_type: normal
+- description: Amount recorded for the order, USD. Revenue is the sum of this column (D2).
+  display_name: Total
+  name: total
+  semantic_type: type/Currency
+  settings:
+    currency: USD
+  visibility_type: normal
+- description: Discount applied, USD. Empty when no discount (1,915 of 18,760 historical orders have one).
+  display_name: Discount
+  name: discount
+  semantic_type: type/Discount
+  settings:
+    currency: USD
+  visibility_type: normal
+- description: When the order was placed. The date basis for every order metric.
+  display_name: Created at
+  name: created_at
+  semantic_type: type/CreationTimestamp
+  visibility_type: normal
+- description: Units of the product in the order.
+  display_name: Quantity
+  name: quantity
+  semantic_type: type/Quantity
+  visibility_type: normal
+visualization_settings:
+  column_settings: null
+card_schema: 24
+serdes/meta:
+- id: JMsjdo1cvicrouzTtVAyu
+  label: store_orders
+  model: Card
+type: model

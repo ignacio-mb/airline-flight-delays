@@ -1,0 +1,21 @@
+created_at: '2026-09-30T17:09:01.788688Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - count
+      - name: customers
+    source-table:
+    - Sample Database
+    - public
+    - people
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Count of people (customers) by signup date. Owner: ignacio@metabase.com.'
+entity_id: 5H-7znzQ_KHfCMo0Y6CIb
+name: Customers
+serdes/meta:
+- id: 5H-7znzQ_KHfCMo0Y6CIb
+  label: customers
+  model: Measure

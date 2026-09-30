@@ -1,0 +1,36 @@
+created_at: '2026-09-30T15:46:06.525016Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - sum-where
+      - name: departure_delay_minutes
+      - - field
+        - {}
+        - - Analytics
+          - flight_analytics
+          - mart_bts_fct_flight
+          - departure_delay_min
+      - - =
+        - {}
+        - - field
+          - {}
+          - - Analytics
+            - flight_analytics
+            - mart_bts_fct_flight
+            - is_cancelled
+        - false
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Sum of departure delay minutes over flights that were not cancelled; early departures count as negative. Numerator of Average departure delay. Owner: ignacio@metabase.com.'
+entity_id: _51K12-YqYFmC6FZqNn4B
+name: Departure delay minutes (departed flights)
+serdes/meta:
+- id: _51K12-YqYFmC6FZqNn4B
+  label: departure_delay_minutes__departed_flights_
+  model: Measure

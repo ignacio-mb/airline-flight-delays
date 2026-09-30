@@ -1,0 +1,27 @@
+created_at: '2026-09-30T15:46:06.282329Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - avg
+      - name: avg_arrival_delay_min
+      - - field
+        - {}
+        - - Analytics
+          - flight_analytics
+          - mart_bts_fct_flight
+          - arrival_delay_min
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Average minutes from scheduled to actual arrival over completed flights; early arrivals count as negative minutes. Cancelled and diverted flights have no arrival delay and are excluded. Owner: ignacio@metabase.com.'
+entity_id: 3bOz4QQXqRZn9-h0yyB0e
+name: Average arrival delay
+serdes/meta:
+- id: 3bOz4QQXqRZn9-h0yyB0e
+  label: average_arrival_delay
+  model: Measure

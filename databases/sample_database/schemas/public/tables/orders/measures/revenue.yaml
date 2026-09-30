@@ -1,0 +1,27 @@
+created_at: '2026-09-30T17:09:00.288922Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - sum
+      - name: revenue
+      - - field
+        - {}
+        - - Sample Database
+          - public
+          - orders
+          - total
+    source-table:
+    - Sample Database
+    - public
+    - orders
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Sum of the recorded order total, USD (D2). Recomputing subtotal + tax - discount would read 5.3% lower on the historical data. Owner: ignacio@metabase.com.'
+entity_id: qesRIBCthjLDSHsqVZwA5
+name: Revenue
+serdes/meta:
+- id: qesRIBCthjLDSHsqVZwA5
+  label: revenue
+  model: Measure

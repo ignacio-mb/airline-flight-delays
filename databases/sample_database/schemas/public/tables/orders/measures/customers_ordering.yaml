@@ -1,0 +1,27 @@
+created_at: '2026-09-30T17:09:01.540232Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - distinct
+      - name: customers_ordering
+      - - field
+        - {}
+        - - Sample Database
+          - public
+          - orders
+          - user_id
+    source-table:
+    - Sample Database
+    - public
+    - orders
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Distinct customers with at least one order in the period. Owner: ignacio@metabase.com.'
+entity_id: ynGnkWbOr36_aj27bfyy9
+name: Customers ordering
+serdes/meta:
+- id: ynGnkWbOr36_aj27bfyy9
+  label: customers_ordering
+  model: Measure

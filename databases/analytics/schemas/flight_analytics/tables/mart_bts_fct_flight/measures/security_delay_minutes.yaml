@@ -1,0 +1,27 @@
+created_at: '2026-09-30T15:46:08.214672Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - sum
+      - name: security_delay_minutes
+      - - field
+        - {}
+        - - Analytics
+          - flight_analytics
+          - mart_bts_fct_flight
+          - security_delay_min
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Minutes of arrival delay caused by security, on flights 15+ min late. Owner: ignacio@metabase.com.'
+entity_id: TThWZChIsXNUHGoK2TS38
+name: Security delay minutes
+serdes/meta:
+- id: TThWZChIsXNUHGoK2TS38
+  label: security_delay_minutes
+  model: Measure

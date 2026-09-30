@@ -1,0 +1,168 @@
+caveats: October 2015 flights named airports by 5-digit BTS ids; the id each airport maps to is inferred from September/November flights (300 of 322). Coordinates are empty for ECP, PBG, UST.
+caveats_set: true
+collection_id: librarylibrarydatadat
+created_at: '2026-09-30T15:45:25.65814Z'
+description: One row per US airport in the 2015 BTS airport list (322 airports), with city, state, and coordinates.
+description_set: true
+display_name: Airports
+entity_type: entity/GenericTable
+fields:
+- created_at: '2026-09-30T15:45:14.550715Z'
+  description: City the airport serves.
+  description_set: true
+  display_name: City
+  has_field_values: list
+  semantic_type: type/City
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airport
+    model: Table
+  - id: airport_city
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:14.080247Z'
+  description: Three-letter IATA airport code, as on Flights.
+  description_set: true
+  display_name: Airport code
+  has_field_values: list
+  semantic_type: type/PK
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airport
+    model: Table
+  - id: airport_code
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:15.014119Z'
+  description: Always USA.
+  description_set: true
+  display_name: Country
+  visibility_type: details-only
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airport
+    model: Table
+  - id: airport_country
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:14.317517Z'
+  description: Airport name.
+  description_set: true
+  display_name: Airport
+  has_field_values: list
+  semantic_type: type/Name
+  semantic_type_set: true
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airport
+    model: Table
+  - id: airport_name
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:14.783447Z'
+  description: Two-letter state or territory code (AS, GU, PR, VI are territories).
+  description_set: true
+  display_name: State
+  has_field_values: list
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airport
+    model: Table
+  - id: airport_state
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:15.710057Z'
+  description: The 5-digit BTS id October 2015 flights use for this airport, inferred from September/November legs (D3).
+  description_set: true
+  display_name: BTS airport id (October)
+  visibility_type: details-only
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airport
+    model: Table
+  - id: bts_airport_id
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:15.937516Z'
+  description: True when the October crosswalk identified this airport's BTS id (300 of 322).
+  description_set: true
+  display_name: Has BTS airport id
+  visibility_type: details-only
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airport
+    model: Table
+  - id: is_matched_bts_airport_id
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:15.246188Z'
+  description: Degrees north. Empty for ECP, PBG, UST.
+  description_set: true
+  display_name: Latitude
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airport
+    model: Table
+  - id: latitude
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T15:45:15.478887Z'
+  description: Degrees east (negative). Empty for ECP, PBG, UST.
+  description_set: true
+  display_name: Longitude
+  serdes/meta:
+  - id: Analytics
+    model: Database
+  - id: flight_analytics
+    model: Schema
+  - id: mart_bts_dim_airport
+    model: Table
+  - id: longitude
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+is_published: true
+owner_email: ignacio@metabase.com
+serdes/meta:
+- id: Analytics
+  model: Database
+- id: flight_analytics
+  model: Schema
+- id: mart_bts_dim_airport
+  model: Table
+- id: '1'
+  model: TableUserSettings
