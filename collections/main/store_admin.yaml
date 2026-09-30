@@ -1,0 +1,10 @@
+name: Store Admin
+description: 'Models and write actions behind the Store Admin data app (add orders, edit customer profiles). Owner: ignacio@metabase.com.'
+entity_id: hmnfITTYwUMMqZmVdPgVn
+slug: store_admin
+created_at: '2026-09-30T17:19:06.12625Z'
+serdes/meta:
+- id: hmnfITTYwUMMqZmVdPgVn
+  label: store_admin
+  model: Collection
+is_remote_synced: true
