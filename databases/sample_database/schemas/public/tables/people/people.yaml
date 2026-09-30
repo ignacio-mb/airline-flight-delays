@@ -1,0 +1,173 @@
+caveats: Contains personal data (names, emails, addresses), visible to Metabase users by decision. The password column is hidden.
+caveats_set: true
+collection_id: librarylibrarydatadat
+created_at: '2026-09-30T17:08:29.490753Z'
+description: One row per customer (2,500), with contact details, location, birth date, and how they found the store. Orders link here through User ID. Editable through the Orders app.
+description_set: true
+display_name: People
+entity_type: entity/UserTable
+fields:
+- created_at: '2026-09-30T17:08:45.080864Z'
+  description: Street address.
+  description_set: true
+  display_name: Address
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: people
+    model: Table
+  - id: address
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:46.468082Z'
+  display_name: Birth date
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: people
+    model: Table
+  - id: birth_date
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:45.768175Z'
+  display_name: City
+  has_field_values: search
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: people
+    model: Table
+  - id: city
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:46.931177Z'
+  description: When the customer signed up; the date basis for New customers.
+  description_set: true
+  display_name: Created at
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: people
+    model: Table
+  - id: created_at
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:45.305417Z'
+  description: Customer email; unique across people.
+  description_set: true
+  display_name: Email
+  has_field_values: search
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: people
+    model: Table
+  - id: email
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:45.53426Z'
+  description: Customer full name.
+  description_set: true
+  display_name: Name
+  has_field_values: search
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: people
+    model: Table
+  - id: name
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:44.849701Z'
+  description: 'Hidden: credential column, never shown.'
+  description_set: true
+  visibility_type: sensitive
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: people
+    model: Table
+  - id: password
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:46.23243Z'
+  description: 'How the customer found the store: Affiliate, Facebook, Google, Organic, Twitter.'
+  description_set: true
+  display_name: Source
+  has_field_values: list
+  semantic_type: type/Category
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: people
+    model: Table
+  - id: source
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:46.000118Z'
+  description: Two-letter US state; sets the tax rate on new orders.
+  description_set: true
+  display_name: State
+  has_field_values: list
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: people
+    model: Table
+  - id: state
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:46.699154Z'
+  display_name: Zip
+  semantic_type: type/ZipCode
+  semantic_type_set: true
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: people
+    model: Table
+  - id: zip
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+is_published: true
+owner_email: ignacio@metabase.com
+serdes/meta:
+- id: Sample Database
+  model: Database
+- id: public
+  model: Schema
+- id: people
+  model: Table
+- id: '1'
+  model: TableUserSettings

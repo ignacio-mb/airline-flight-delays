@@ -1,0 +1,41 @@
+name: Average arrival delay
+description: 'Self-consistent only, no external reference. Average minutes late at arrival over completed flights (4.41 min in 2015); early arrivals count as negative, so the average understates how late late flights are (see Average delay when late). Cancelled and diverted flights (1.8%) have no arrival delay and are excluded. Dated by the local scheduled-departure date; closed 2015 extract, every month complete. Answers: average delay per flight, mean minutes late on arrival. Owner: ignacio@metabase.com.'
+entity_id: gpPA2jdDbGNfBRARR58DS
+created_at: '2026-09-30T15:46:38.216569Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+display: line
+collection_id: librarylibrarymetrics
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - measure
+      - display-name: Average arrival delay (min)
+        name: avg_arrival_delay_min
+      - 3bOz4QQXqRZn9-h0yyB0e
+    breakout:
+    - - field
+      - temporal-unit: month
+      - - Analytics
+        - flight_analytics
+        - mart_bts_fct_flight
+        - flight_date
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings:
+    '["name","avg_arrival_delay_min"]':
+      decimals: 1
+      suffix: ' min'
+card_schema: 24
+serdes/meta:
+- id: gpPA2jdDbGNfBRARR58DS
+  label: average_arrival_delay
+  model: Card
+type: metric

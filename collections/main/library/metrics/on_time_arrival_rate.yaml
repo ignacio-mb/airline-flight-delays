@@ -1,0 +1,46 @@
+name: On-time arrival rate
+description: 'Reconciled to BTS Table 1 "Summary of Airline On-Time Performance, Year-to-date through December 2015" (published 2016-02-11) on 2026-09-30: exact match, 79.92% on time; 5,819,079 operations, 1,063,439 late arrivals, 89,884 cancelled, 15,187 diverted. Share of scheduled flights that arrived less than 15 minutes after their scheduled arrival (DOT standard, D1). The denominator is every scheduled flight, so cancelled (1.54%) and diverted (0.26%) flights count as not on time (BTS convention, D2); over completed flights only the 2015 rate would read 81.39%. Dated by the local scheduled-departure date. Not comparable to departure punctuality or to rates over completed flights. Closed 2015 extract, every month complete. Owner: ignacio@metabase.com.'
+entity_id: TVKs6PcFsji-zWmIEzvj4
+created_at: '2026-09-30T15:38:07.373413Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+display: line
+collection_id: librarylibrarymetrics
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - /
+      - display-name: On-time arrival rate
+        name: on_time_arrival_rate
+      - - measure
+        - {}
+        - 2ahSRbhvNH0BkgaEZR0PF
+      - - measure
+        - {}
+        - D82r4WTcVV3Z21N4C_SdG
+    breakout:
+    - - field
+      - temporal-unit: month
+      - - Analytics
+        - flight_analytics
+        - mart_bts_fct_flight
+        - flight_date
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings:
+    '["name","on_time_arrival_rate"]':
+      decimals: 1
+      number_style: percent
+card_schema: 24
+serdes/meta:
+- id: TVKs6PcFsji-zWmIEzvj4
+  label: on_time_arrival_rate
+  model: Card
+type: metric

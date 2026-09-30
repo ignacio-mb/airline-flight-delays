@@ -1,0 +1,39 @@
+name: Orders
+description: 'Self-consistent only, no external reference. Count of orders (18,760 historical). Monthly by created_at; April 2020 is partial (data ends 2020-04-19); orders added through the app are dated when entered. Owner: ignacio@metabase.com.'
+entity_id: MW6hqtBC01usErFWt37oc
+created_at: '2026-09-30T17:09:24.23856Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+display: line
+collection_id: librarylibrarymetrics
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - measure
+      - display-name: Orders
+        name: orders
+      - ve74IGZ7Vdj5Or53s90BK
+    breakout:
+    - - field
+      - temporal-unit: month
+      - - Sample Database
+        - public
+        - orders
+        - created_at
+    source-table:
+    - Sample Database
+    - public
+    - orders
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings:
+    '["name","orders"]': {}
+card_schema: 24
+serdes/meta:
+- id: MW6hqtBC01usErFWt37oc
+  label: orders
+  model: Card
+type: metric

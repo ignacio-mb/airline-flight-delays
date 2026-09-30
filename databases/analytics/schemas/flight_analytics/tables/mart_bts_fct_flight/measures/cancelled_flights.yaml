@@ -1,0 +1,30 @@
+created_at: '2026-09-30T15:46:05.306904Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - count-where
+      - name: cancelled_flights
+      - - =
+        - {}
+        - - field
+          - {}
+          - - Analytics
+            - flight_analytics
+            - mart_bts_fct_flight
+            - is_cancelled
+        - true
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Count of cancelled flights. Owner: ignacio@metabase.com.'
+entity_id: UPCldOeyuDiWEkG-3aAJ7
+name: Cancelled flights
+serdes/meta:
+- id: UPCldOeyuDiWEkG-3aAJ7
+  label: cancelled_flights
+  model: Measure

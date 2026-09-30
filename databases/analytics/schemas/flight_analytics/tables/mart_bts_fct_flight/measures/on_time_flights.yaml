@@ -1,0 +1,31 @@
+created_at: '2026-09-30T15:37:36.111832Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - count-where
+      - display-name: On-time flights
+        name: on_time_flights
+      - - =
+        - {}
+        - - field
+          - {}
+          - - Analytics
+            - flight_analytics
+            - mart_bts_fct_flight
+            - is_on_time
+        - true
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Count of flights that completed and arrived less than 15 minutes after schedule (DOT standard, D1). Cancelled and diverted flights are not on time. Owner: ignacio@metabase.com.'
+entity_id: 2ahSRbhvNH0BkgaEZR0PF
+name: On-time flights
+serdes/meta:
+- id: 2ahSRbhvNH0BkgaEZR0PF
+  label: on_time_flights
+  model: Measure

@@ -1,0 +1,46 @@
+name: Average delay when late
+description: 'Self-consistent only, no external reference. Average arrival delay of flights 15+ minutes late (58.9 min in 2015): how late a late flight is. Not comparable to Average arrival delay, which averages over every completed flight. Dated by the local scheduled-departure date; closed 2015 extract, every month complete. Answers: how late are late flights, typical delay of a delayed flight. Owner: ignacio@metabase.com.'
+entity_id: fOVcTfJT-0eHsoW-O9sgd
+created_at: '2026-09-30T15:46:38.794603Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+display: line
+collection_id: librarylibrarymetrics
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - /
+      - display-name: Average delay when late (min)
+        name: avg_delay_when_late_min
+      - - measure
+        - {}
+        - ClWRgxAxJgP55gDWAXDo6
+      - - measure
+        - {}
+        - KgMy-7AV_TyDnffgLhgY-
+    breakout:
+    - - field
+      - temporal-unit: month
+      - - Analytics
+        - flight_analytics
+        - mart_bts_fct_flight
+        - flight_date
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings:
+    '["name","avg_delay_when_late_min"]':
+      decimals: 1
+      suffix: ' min'
+card_schema: 24
+serdes/meta:
+- id: fOVcTfJT-0eHsoW-O9sgd
+  label: average_delay_when_late
+  model: Card
+type: metric

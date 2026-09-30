@@ -1,0 +1,36 @@
+created_at: '2026-09-30T15:46:07.009706Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - sum-where
+      - name: late_arrival_delay_minutes
+      - - field
+        - {}
+        - - Analytics
+          - flight_analytics
+          - mart_bts_fct_flight
+          - arrival_delay_min
+      - - =
+        - {}
+        - - field
+          - {}
+          - - Analytics
+            - flight_analytics
+            - mart_bts_fct_flight
+            - is_late_15
+        - true
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Sum of arrival delay minutes over flights 15+ minutes late; equals the sum of the five delay-cause minutes. Owner: ignacio@metabase.com.'
+entity_id: ClWRgxAxJgP55gDWAXDo6
+name: Delay minutes on late arrivals
+serdes/meta:
+- id: ClWRgxAxJgP55gDWAXDo6
+  label: delay_minutes_on_late_arrivals
+  model: Measure

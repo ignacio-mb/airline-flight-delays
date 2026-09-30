@@ -1,0 +1,40 @@
+created_at: '2026-09-30T15:46:06.768285Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - count-where
+      - name: departed_flights
+      - - and
+        - {}
+        - - not-null
+          - {}
+          - - field
+            - {}
+            - - Analytics
+              - flight_analytics
+              - mart_bts_fct_flight
+              - departure_delay_min
+        - - =
+          - {}
+          - - field
+            - {}
+            - - Analytics
+              - flight_analytics
+              - mart_bts_fct_flight
+              - is_cancelled
+          - false
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Count of flights that were not cancelled and have a departure delay: the denominator of Average departure delay. Owner: ignacio@metabase.com.'
+entity_id: GlmRHyjwxNJBFdupTJ77w
+name: Departed flights
+serdes/meta:
+- id: GlmRHyjwxNJBFdupTJ77w
+  label: departed_flights
+  model: Measure

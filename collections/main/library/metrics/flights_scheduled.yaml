@@ -1,0 +1,39 @@
+name: Flights scheduled
+description: 'Reconciled to BTS Table 1 "Summary of Airline On-Time Performance, Year-to-date through December 2015" on 2026-09-30: exact match, 5,819,079 operations. Count of scheduled flights, cancelled and diverted included. 14 airlines; US Airways January-June only. Dated by the local scheduled-departure date; closed 2015 extract, every month complete. Owner: ignacio@metabase.com.'
+entity_id: 1t2FXOw-51UqMpzPTVC33
+created_at: '2026-09-30T15:46:37.935372Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+display: line
+collection_id: librarylibrarymetrics
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - measure
+      - display-name: Flights scheduled
+        name: flights_scheduled
+      - D82r4WTcVV3Z21N4C_SdG
+    breakout:
+    - - field
+      - temporal-unit: month
+      - - Analytics
+        - flight_analytics
+        - mart_bts_fct_flight
+        - flight_date
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings:
+    '["name","flights_scheduled"]': {}
+card_schema: 24
+serdes/meta:
+- id: 1t2FXOw-51UqMpzPTVC33
+  label: flights_scheduled
+  model: Card
+type: metric

@@ -1,0 +1,27 @@
+created_at: '2026-09-30T17:09:01.295352Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Sample Database
+  stages:
+  - aggregation:
+    - - sum
+      - name: items_sold
+      - - field
+        - {}
+        - - Sample Database
+          - public
+          - orders
+          - quantity
+    source-table:
+    - Sample Database
+    - public
+    - orders
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Sum of quantity across orders. Owner: ignacio@metabase.com.'
+entity_id: JSLqANxCPCIC9tqFPZjEa
+name: Items sold
+serdes/meta:
+- id: JSLqANxCPCIC9tqFPZjEa
+  label: items_sold
+  model: Measure

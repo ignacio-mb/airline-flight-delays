@@ -1,0 +1,173 @@
+caveats: Totals are recorded as the store reported them; in the historical data they rarely equal subtotal + tax - discount (revenue uses the recorded total, D2). April 2020 is partial (data ends 2020-04-19). Orders added by the app are dated when entered, years after the historical data.
+caveats_set: true
+collection_id: librarylibrarydatadat
+created_at: '2026-09-30T17:08:29.250906Z'
+description: 'One row per order in the Sample Database store (18,760 orders, April 2016 to April 2020, plus any added through the Orders app): one product, a quantity, and its subtotal, tax, discount, and total in USD.'
+description_set: true
+display_name: Orders
+entity_type: entity/TransactionTable
+fields:
+- created_at: '2026-09-30T17:08:44.380606Z'
+  description: When the order was placed. The date basis for every order metric.
+  description_set: true
+  display_name: Created at
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: orders
+    model: Table
+  - id: created_at
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:44.147145Z'
+  description: Discount applied, USD. Empty when no discount (1,915 of 18,760 historical orders have one).
+  description_set: true
+  display_name: Discount
+  semantic_type: type/Currency
+  semantic_type_set: true
+  settings:
+    currency: USD
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: orders
+    model: Table
+  - id: discount
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:42.719742Z'
+  description: Order identifier. New orders from the app take the next number (the table has no id generator).
+  description_set: true
+  display_name: Order ID
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: orders
+    model: Table
+  - id: id
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:43.203295Z'
+  description: The product ordered; links to Products.
+  description_set: true
+  display_name: Product
+  has_field_values: search
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: orders
+    model: Table
+  - id: product_id
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:44.620778Z'
+  description: Units of the product in the order.
+  description_set: true
+  display_name: Quantity
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: orders
+    model: Table
+  - id: quantity
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:43.437086Z'
+  description: Order value before tax and discount, USD.
+  description_set: true
+  display_name: Subtotal
+  semantic_type: type/Currency
+  semantic_type_set: true
+  settings:
+    currency: USD
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: orders
+    model: Table
+  - id: subtotal
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:43.675069Z'
+  description: Sales tax, USD, at the customer's state rate.
+  description_set: true
+  display_name: Tax
+  semantic_type: type/Currency
+  semantic_type_set: true
+  settings:
+    currency: USD
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: orders
+    model: Table
+  - id: tax
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:43.912437Z'
+  description: Amount recorded for the order, USD. Revenue is the sum of this column (D2).
+  description_set: true
+  display_name: Total
+  semantic_type: type/Currency
+  semantic_type_set: true
+  settings:
+    currency: USD
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: orders
+    model: Table
+  - id: total
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+- created_at: '2026-09-30T17:08:42.963933Z'
+  description: The customer who placed the order; links to People.
+  description_set: true
+  display_name: Customer
+  has_field_values: search
+  serdes/meta:
+  - id: Sample Database
+    model: Database
+  - id: public
+    model: Schema
+  - id: orders
+    model: Table
+  - id: user_id
+    model: Field
+  - id: '1'
+    model: FieldUserSettings
+is_published: true
+owner_email: ignacio@metabase.com
+serdes/meta:
+- id: Sample Database
+  model: Database
+- id: public
+  model: Schema
+- id: orders
+  model: Table
+- id: '1'
+  model: TableUserSettings

@@ -1,0 +1,30 @@
+created_at: '2026-09-30T15:46:05.79685Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - count-where
+      - name: completed_flights
+      - - =
+        - {}
+        - - field
+          - {}
+          - - Analytics
+            - flight_analytics
+            - mart_bts_fct_flight
+            - is_completed
+        - true
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Count of flights neither cancelled nor diverted: the flights with an arrival delay. Owner: ignacio@metabase.com.'
+entity_id: UCJPp8dn3gTgsQostc_1o
+name: Completed flights
+serdes/meta:
+- id: UCJPp8dn3gTgsQostc_1o
+  label: completed_flights
+  model: Measure

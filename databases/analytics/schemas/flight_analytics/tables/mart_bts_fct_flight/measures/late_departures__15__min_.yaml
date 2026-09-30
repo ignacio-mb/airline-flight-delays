@@ -1,0 +1,41 @@
+created_at: '2026-09-30T15:46:06.041008Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - count-where
+      - name: late_departures
+      - - and
+        - {}
+        - - '>='
+          - {}
+          - - field
+            - {}
+            - - Analytics
+              - flight_analytics
+              - mart_bts_fct_flight
+              - departure_delay_min
+          - 15
+        - - =
+          - {}
+          - - field
+            - {}
+            - - Analytics
+              - flight_analytics
+              - mart_bts_fct_flight
+              - is_cancelled
+          - false
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Count of flights that left the gate 15 or more minutes late and were not cancelled (BTS late departure; 2,054 cancelled flights that left late are excluded). Owner: ignacio@metabase.com.'
+entity_id: zSv3qjBdJ7Aql7TxbejJs
+name: Late departures (15+ min)
+serdes/meta:
+- id: zSv3qjBdJ7Aql7TxbejJs
+  label: late_departures__15__min_
+  model: Measure

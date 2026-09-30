@@ -1,0 +1,46 @@
+name: Diversion rate
+description: 'Reconciled to BTS Table 1 "Summary of Airline On-Time Performance, Year-to-date through December 2015" on 2026-09-30: exact match, 0.26% (15,187 of 5,819,079). Share of scheduled flights that landed somewhere other than their destination. Dated by the local scheduled-departure date; closed 2015 extract, every month complete. Owner: ignacio@metabase.com.'
+entity_id: NpcZ0TBBLtmBTzzWN0mxA
+created_at: '2026-09-30T15:46:37.080831Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+display: line
+collection_id: librarylibrarymetrics
+parameters: []
+parameter_mappings: []
+dataset_query:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - /
+      - display-name: Diversion rate
+        name: diversion_rate
+      - - measure
+        - {}
+        - m_6Mybw7dDEPotrGB-keG
+      - - measure
+        - {}
+        - D82r4WTcVV3Z21N4C_SdG
+    breakout:
+    - - field
+      - temporal-unit: month
+      - - Analytics
+        - flight_analytics
+        - mart_bts_fct_flight
+        - flight_date
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+visualization_settings:
+  column_settings:
+    '["name","diversion_rate"]':
+      decimals: 2
+      number_style: percent
+card_schema: 24
+serdes/meta:
+- id: NpcZ0TBBLtmBTzzWN0mxA
+  label: diversion_rate
+  model: Card
+type: metric

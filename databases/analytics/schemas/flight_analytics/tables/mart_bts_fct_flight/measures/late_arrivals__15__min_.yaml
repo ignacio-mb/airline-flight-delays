@@ -1,0 +1,30 @@
+created_at: '2026-09-30T15:46:05.044107Z'
+creator_id: api-key-user-1dde3624-d80e-4166-abed-10815c4b8703@api-key.invalid
+definition:
+  database: Analytics
+  stages:
+  - aggregation:
+    - - count-where
+      - name: late_arrivals
+      - - =
+        - {}
+        - - field
+          - {}
+          - - Analytics
+            - flight_analytics
+            - mart_bts_fct_flight
+            - is_late_15
+        - true
+    source-table:
+    - Analytics
+    - flight_analytics
+    - mart_bts_fct_flight
+    lib/type: mbql.stage/mbql
+  lib/type: mbql/query
+description: 'Count of completed flights that arrived 15 or more minutes after schedule (BTS late arrival). These are the flights that carry delay causes. Owner: ignacio@metabase.com.'
+entity_id: KgMy-7AV_TyDnffgLhgY-
+name: Late arrivals (15+ min)
+serdes/meta:
+- id: KgMy-7AV_TyDnffgLhgY-
+  label: late_arrivals__15__min_
+  model: Measure
